@@ -1,7 +1,7 @@
 # Личный проект «Шесть городов» [![Build status][travis-image]][travis-url]
 
 * Студент: [Валерия Зеленая](https://up.htmlacademy.ru/react/1/user/425717).
-* Наставник: `Неизвестно`.
+* Наставник: [Игорь Алексеенко](https://htmlacademy.ru/profile/o0).
 
 ---
 
