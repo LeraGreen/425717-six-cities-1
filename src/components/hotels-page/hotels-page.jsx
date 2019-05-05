@@ -1,13 +1,13 @@
 import React from "react";
+import PropTypes from "prop-types";
+
 import HotelCard from "../hotel-card/hotel-card.jsx";
 
 const HotelsPage = (props) => {
   const hotels = props.hotels;
 
-  const listItems = hotels.map(item => (
-    <HotelCard 
-      hotel={item} 
-    />
+  const listItems = hotels.map((item, i) => (
+    <HotelCard key={i} hotel={item}/>
   ));
 
 
@@ -107,7 +107,7 @@ const HotelsPage = (props) => {
             </form>
             <div className="cities__places-list places__list tabs__content">
 
-            {listItems}
+              {listItems}
 
             </div>
           </section>
@@ -118,6 +118,10 @@ const HotelsPage = (props) => {
       </div>
     </main>
   </React.Fragment>;
+};
+
+HotelsPage.propTypes = {
+  hotels: PropTypes.arrayOf(PropTypes.object)
 };
 
 export default HotelsPage;

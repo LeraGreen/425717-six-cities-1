@@ -1,6 +1,8 @@
 import React from "react";
 import ReactDOM from "react-dom";
+
 import App from "./components/app/app.jsx";
+
 
 const init = () => {
   const hotels = [
@@ -42,11 +44,10 @@ const init = () => {
   ];
 
   ReactDOM.render(
-      <App 
-        hotels = {hotels}
-      />,
+      <App hotels = {hotels}/>,
       document.getElementById(`root`)
   );
 };
 
 init();
+
