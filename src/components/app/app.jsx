@@ -1,8 +1,8 @@
 import React from 'react';
-import MainPage from '../main-page/main-page.jsx';
+import HotelsPage from '../hotels-page/hotels-page.jsx';
 
 const App = () => {
-  return <MainPage />;
+  return <HotelsPage />;
 };
 
 export default App;
