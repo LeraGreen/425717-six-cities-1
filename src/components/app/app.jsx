@@ -9,8 +9,14 @@ const App = (props) => {
   return <HotelsPage hotels={hotels}/>;
 };
 
-App.propTypes = {
-  hotels: PropTypes.arrayOf(PropTypes.object)
+HotelsPage.propTypes = {
+  hotels: PropTypes.arrayOf(PropTypes.shape({
+    description: PropTypes.string.isRequired,
+    price: PropTypes.number.isRequired,
+    type: PropTypes.string.isRequired,
+    rating: PropTypes.number.isRequired,
+    photo: PropTypes.string.isRequired
+  })).isRequired
 };
 
 export default App;
