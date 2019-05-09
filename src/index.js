@@ -44,7 +44,7 @@ const init = () => {
   ];
 
   ReactDOM.render(
-      <App hotels={hotels}/>,
+      <App hotels={hotels} />,
       document.getElementById(`root`)
   );
 };
