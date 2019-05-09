@@ -1,7 +1,7 @@
-import React from 'react';
+import React from "react";
 import PropTypes from "prop-types";
 
-import HotelsPage from '../hotels-page/hotels-page.jsx';
+import HotelsPage from "../hotels-page/hotels-page.jsx";
 
 const App = (props) => {
   const hotels = props.hotels;
@@ -9,7 +9,7 @@ const App = (props) => {
   return <HotelsPage hotels={hotels}/>;
 };
 
-HotelsPage.propTypes = {
+App.propTypes = {
   hotels: PropTypes.arrayOf(PropTypes.shape({
     description: PropTypes.string.isRequired,
     price: PropTypes.number.isRequired,
