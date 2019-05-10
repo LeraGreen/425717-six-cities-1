@@ -6,10 +6,10 @@ import PropTypes from "prop-types";
 
 class HotelCard extends Component {
   constructor(props) {
-    super(props)
+    super(props);
   }
 
-  render () {
+  render() {
     return <article className="cities__place-card place-card">
       <div className="place-card__mark">
         <span></span>
