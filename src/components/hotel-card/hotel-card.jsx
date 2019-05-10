@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 
 const HotelCard = (props) => {
   const hotel = props.hotel;
+  const onClick = props.onClick;
 
   return <article className="cities__place-card place-card">
     <div className="place-card__mark">
@@ -33,7 +34,7 @@ const HotelCard = (props) => {
           <span className="visually-hidden">Rating</span>
         </div>
       </div>
-      <h2 className="place-card__name">
+      <h2 className="place-card__name" onClick={onClick}>
         <a href="#">{hotel.description}</a>
       </h2>
       <p className="place-card__type">{hotel.type}</p>
@@ -48,7 +49,8 @@ HotelCard.propTypes = {
     type: PropTypes.string.isRequired,
     rating: PropTypes.number.isRequired,
     photo: PropTypes.string.isRequired
-  }).isRequired
+  }).isRequired,
+  onClick: PropTypes.func
 };
 
 export default HotelCard;

@@ -7,7 +7,9 @@ const HotelsPage = (props) => {
   const hotels = props.hotels;
 
   const listItems = hotels.map((item, i) => (
-    <HotelCard key={i} hotel={item} />
+    <HotelCard
+      key={i}
+      hotel={item} />
   ));
 
 
