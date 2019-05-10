@@ -74,7 +74,7 @@ exports[`Hotel renders correctly 1`] = `
         <span
           style={
             Object {
-              "width": "93%",
+              "width": "70%",
             }
           }
         />

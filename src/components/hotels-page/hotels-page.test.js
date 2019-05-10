@@ -50,7 +50,6 @@ it(`Hotels page renders correctly`, () => {
     .create(<HotelsPage hotels={hotels} />)
     .toJSON();
 
-  expect(tree)
-    .toMatchSnapshot();
+  expect(tree).toMatchSnapshot();
 });
 
