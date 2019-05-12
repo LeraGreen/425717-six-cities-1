@@ -16,12 +16,14 @@ const mock = {
   }
 };
 
-it(`On click on title of card call callback`, () => {
+it(`Click on card's title calls callback`, () => {
   const hotel = mock.hotel;
   const clickHandler = jest.fn();
 
   const card = mount(<HotelCard
     hotel={hotel}
+    index={0}
+    key={0}
     onClick = {clickHandler}
   />);
 
