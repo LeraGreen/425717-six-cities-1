@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 import HotelsPage from "../hotels-page/hotels-page.jsx";
 
 const App = (props) => {
-  const hotels = props.hotels;
+  const {hotels} = props;
 
   return <HotelsPage hotels={hotels} />;
 };

@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 
 const HotelCard = (props) => {
-  const hotel = props.hotel;
+  const {hotel, onClick, index} = props;
 
   return <article className="cities__place-card place-card">
     <div className="place-card__mark">
@@ -28,12 +28,16 @@ const HotelCard = (props) => {
       </div>
       <div className="place-card__rating rating">
         <div className="place-card__stars rating__stars">
-
           <span style={{width: `${hotel.rating}%`}}></span>
           <span className="visually-hidden">Rating</span>
         </div>
       </div>
-      <h2 className="place-card__name">
+      <h2 className="place-card__name" onClick={(evt) => {
+        if (onClick && index !== undefined) {
+          evt.preventDefault();
+          onClick(index);
+        }
+      }}>
         <a href="#">{hotel.description}</a>
       </h2>
       <p className="place-card__type">{hotel.type}</p>
@@ -48,7 +52,9 @@ HotelCard.propTypes = {
     type: PropTypes.string.isRequired,
     rating: PropTypes.number.isRequired,
     photo: PropTypes.string.isRequired
-  }).isRequired
+  }).isRequired,
+  onClick: PropTypes.func,
+  index: PropTypes.number
 };
 
 export default HotelCard;

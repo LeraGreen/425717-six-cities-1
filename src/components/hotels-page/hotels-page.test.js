@@ -44,13 +44,12 @@ const mock = {
 };
 
 it(`Hotels page renders correctly`, () => {
-  const hotels = mock.hotels;
+  const {hotels} = mock;
 
   const tree = renderer
     .create(<HotelsPage hotels={hotels} />)
     .toJSON();
 
-  expect(tree)
-    .toMatchSnapshot();
+  expect(tree).toMatchSnapshot();
 });
 
