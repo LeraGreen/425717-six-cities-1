@@ -14,7 +14,7 @@ const mock = {
 };
 
 it(`Hotel renders correctly`, () => {
-  const hotel = mock.hotel;
+  const {hotel} = mock;
   const tree = renderer
     .create(<HotelCard key={0} hotel={hotel} />)
     .toJSON();

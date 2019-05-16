@@ -2,7 +2,6 @@ import React from "react";
 import {configure, mount} from "enzyme";
 import Adapter from "enzyme-adapter-react-16";
 
-import HotelCard from "../hotel-card/hotel-card.jsx";
 import HotelsPage from "./hotels-page.jsx";
 import hotels from "../../mocks/hotels.js";
 

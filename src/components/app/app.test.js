@@ -30,7 +30,7 @@ const mock = {
 };
 
 it(`App renders correctly`, () => {
-  const hotels = mock.hotels;
+  const {hotels} = mock;
   const tree = renderer
     .create(<App hotels={hotels} />)
     .toJSON();

@@ -2,9 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 
 const HotelCard = (props) => {
-  const hotel = props.hotel;
-  const onClick = props.onClick;
-  const index = props.index;
+  const {hotel, onClick, index} = props;
 
   return <article className="cities__place-card place-card">
     <div className="place-card__mark">

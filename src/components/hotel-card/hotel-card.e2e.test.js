@@ -17,7 +17,7 @@ const mock = {
 };
 
 it(`Click on card's title calls callback`, () => {
-  const hotel = mock.hotel;
+  const {hotel} = mock;
   const clickHandler = jest.fn();
 
   const card = mount(<HotelCard
@@ -34,7 +34,7 @@ it(`Click on card's title calls callback`, () => {
 });
 
 it(`Callback doesn't call if index didn't pass`, () => {
-  const hotel = mock.hotel;
+  const {hotel} = mock;
   const clickHandler = jest.fn();
 
   const card = mount(<HotelCard
@@ -50,7 +50,7 @@ it(`Callback doesn't call if index didn't pass`, () => {
 });
 
 it(`Callback doesn't call if handler didn't pass`, () => {
-  const hotel = mock.hotel;
+  const {hotel} = mock;
   const clickHandler = jest.fn();
 
   const card = mount(<HotelCard
@@ -66,7 +66,7 @@ it(`Callback doesn't call if handler didn't pass`, () => {
 });
 
 it(`Callback doesn't call if handler and index didn't pass`, () => {
-  const hotel = mock.hotel;
+  const {hotel} = mock;
   const clickHandler = jest.fn();
 
   const card = mount(<HotelCard
