@@ -1,9 +1,9 @@
-import React, {Component} from "react";
+import React, {PureComponent} from "react";
 import PropTypes from "prop-types";
 
 import HotelCard from "../hotel-card/hotel-card.jsx";
 
-class HotelsPage extends Component {
+class HotelsPage extends PureComponent {
   constructor(props) {
     super(props);
 
