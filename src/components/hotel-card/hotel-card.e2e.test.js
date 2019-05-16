@@ -29,7 +29,6 @@ it(`Click on card's title calls callback`, () => {
 
 
   const title = card.find(`.place-card__name`);
-  expect(clickHandler).toHaveBeenCalledTimes(0);
   title.simulate(`click`);
   expect(clickHandler).toHaveBeenCalledTimes(1);
 });
@@ -46,7 +45,6 @@ it(`Callback doesn't call if index didn't pass`, () => {
 
 
   const title = card.find(`.place-card__name`);
-  expect(clickHandler).toHaveBeenCalledTimes(0);
   title.simulate(`click`);
   expect(clickHandler).toHaveBeenCalledTimes(0);
 });
@@ -63,7 +61,6 @@ it(`Callback doesn't call if handler didn't pass`, () => {
 
 
   const title = card.find(`.place-card__name`);
-  expect(clickHandler).toHaveBeenCalledTimes(0);
   title.simulate(`click`);
   expect(clickHandler).toHaveBeenCalledTimes(0);
 });
@@ -79,7 +76,6 @@ it(`Callback doesn't call if handler and index didn't pass`, () => {
 
 
   const title = card.find(`.place-card__name`);
-  expect(clickHandler).toHaveBeenCalledTimes(0);
   title.simulate(`click`);
   expect(clickHandler).toHaveBeenCalledTimes(0);
 });
