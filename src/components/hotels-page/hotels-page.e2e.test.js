@@ -8,6 +8,13 @@ import hotels from "../../mocks/hotels.js";
 
 configure({adapter: new Adapter()});
 
+it(`Check that initial property value activeCard in state is -1`, () => {
+
+  const hotelsPage = mount(<HotelsPage hotels={hotels} />);
+
+  expect(hotelsPage.state(`activeCard`)).toEqual(-1);
+});
+
 it(`Click on card's update active card's index in state`, () => {
 
   const hotelsPage = mount(<HotelsPage hotels={hotels} />);
