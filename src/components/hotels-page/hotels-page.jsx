@@ -1,6 +1,7 @@
 import React, {PureComponent} from "react";
 import PropTypes from "prop-types";
 
+import Card from "../card/card.jsx";
 import HotelCard from "../hotel-card/hotel-card.jsx";
 
 class HotelsPage extends PureComponent {
@@ -31,6 +32,8 @@ class HotelsPage extends PureComponent {
         onClick={this._onClick}
       />
     ));
+
+    const card = <Card hotels={hotels} />
 
     return <React.Fragment>
       <div style={{display: `none`}}>
@@ -131,7 +134,9 @@ class HotelsPage extends PureComponent {
               </div>
             </section>
             <div className="cities__right-section">
-              <section className="cities__map map"></section>
+              <section className="cities__map map">
+                {card}
+              </section>
             </div>
           </div>
         </div>
