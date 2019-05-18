@@ -24,7 +24,7 @@ class HotelsPage extends PureComponent {
   render() {
     const {hotels} = this.props;
 
-    const map = <Map />;
+    const map = <Map hotels={hotels} />;
     const listItems = hotels.map((item, i) => (
       <HotelCard
         key={i}
