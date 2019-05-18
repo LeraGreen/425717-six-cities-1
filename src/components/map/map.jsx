@@ -45,5 +45,15 @@ class Map extends PureComponent {
   }
 }
 
+Map.propTypes = {
+  hotels: PropTypes.arrayOf(PropTypes.shape({
+    description: PropTypes.string.isRequired,
+    price: PropTypes.number.isRequired,
+    type: PropTypes.string.isRequired,
+    rating: PropTypes.number.isRequired,
+    photo: PropTypes.string.isRequired,
+    coordinates: PropTypes.arrayOf(PropTypes.number)
+  })).isRequired
+};
 
 export default Map;

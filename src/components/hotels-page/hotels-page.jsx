@@ -148,7 +148,8 @@ HotelsPage.propTypes = {
     price: PropTypes.number.isRequired,
     type: PropTypes.string.isRequired,
     rating: PropTypes.number.isRequired,
-    photo: PropTypes.string.isRequired
+    photo: PropTypes.string.isRequired,
+    coordinates: PropTypes.arrayOf(PropTypes.number)
   })).isRequired
 };
 
