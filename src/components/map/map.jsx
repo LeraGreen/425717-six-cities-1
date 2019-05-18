@@ -10,8 +10,8 @@ class Map extends PureComponent {
 
   render() {
     return <section className="cities__map">
-      <div id="map" ref={this.mapRef} style={{height: "100%"}}></div>
-    </section>
+      <div id="map" ref={this.mapRef} style={{height: `100%`}}></div>
+    </section>;
   }
 
   componentDidMount() {
@@ -20,15 +20,15 @@ class Map extends PureComponent {
     const zoom = 12;
     const map = leaflet.map(`map`, {
       center: city,
-      zoom: zoom,
+      zoom,
       zoomControl: false,
       marker: true
     });
     map.setView(city, zoom);
 
     leaflet
-    .tileLayer(`https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png`, { 
-      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'
+    .tileLayer(`https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png`, {
+      attribution: `&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>`
     })
     .addTo(map);
 
@@ -39,7 +39,7 @@ class Map extends PureComponent {
 
     for (let hotel of hotels) {
       leaflet
-      .marker(hotel['coordinates'], {icon})
+      .marker(hotel[`coordinates`], {icon})
       .addTo(map);
     }
   }
