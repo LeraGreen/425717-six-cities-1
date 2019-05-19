@@ -40,14 +40,46 @@ const mock = {
       rating: 80,
       photo: `img/apartment-01.jpg`
     }
-  ]
+  ],
+  mapData: {
+    city: [52.38333, 4.9],
+    zoom: 10,
+    isZoomControl: false,
+    isMarker: true,
+    iconUrl: `img/pin.svg`,
+    iconSize: [20, 20]
+  },
+  leaflet: {
+    map() {
+      return {
+        setView: jest.fn(),
+      };
+    },
+    icon() {
+      jest.fn();
+    },
+    tileLayer() {
+      return {
+        addTo: jest.fn(),
+      };
+    },
+    marker() {
+      return {
+        addTo: jest.fn(),
+      };
+    }
+  }
 };
 
 it(`Hotels page renders correctly`, () => {
-  const {hotels} = mock;
+  const {hotels, mapData, leaflet} = mock;
 
   const tree = renderer
-    .create(<HotelsPage hotels={hotels} />)
+    .create(<HotelsPage 
+      hotels={hotels}
+      mapData={mapData}
+      leaflet={leaflet}
+    />)
     .toJSON();
 
   expect(tree).toMatchSnapshot();
