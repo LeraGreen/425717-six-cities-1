@@ -6,6 +6,11 @@ class Map extends PureComponent {
   constructor(props) {
     super(props);
     this.mapRef = React.createRef();
+    this.map = null;
+    this.city = [52.38333, 4.9];
+    this.zoom = 12;
+    this.isZoomControl = false;
+    this.isMarker = true;
   }
 
   render() {
@@ -16,22 +21,24 @@ class Map extends PureComponent {
 
   componentDidMount() {
     const {hotels} = this.props;
-    const city = [52.38333, 4.9];
-    const zoom = 12;
-    const map = leaflet.map(`map`, {
-      center: city,
-      zoom,
-      zoomControl: false,
-      marker: true
+    
+    this.map = leaflet.map(`map`, {
+      center: this.city,
+      zoom: this.zoom,
+      zoomControl: this.isZoomControl,
+      marker: this.isMarker
     });
-    map.setView(city, zoom);
+    this.map.setView(this.city, this.zoom);
 
     leaflet
     .tileLayer(`https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png`, {
       attribution: `&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>`
     })
-    .addTo(map);
+    .addTo(this.map);
+    this._addPins(hotels);
+  }
 
+  _addPins(hotels) {
     const icon = leaflet.icon({
       iconUrl: `img/pin.svg`,
       iconSize: [30, 30]
@@ -40,7 +47,7 @@ class Map extends PureComponent {
     for (let hotel of hotels) {
       leaflet
       .marker(hotel[`coordinates`], {icon})
-      .addTo(map);
+      .addTo(this.map);
     }
   }
 }
