@@ -6,7 +6,7 @@ import HotelsPage from "../hotels-page/hotels-page.jsx";
 const App = (props) => {
   const {hotels, leaflet, mapData} = props;
 
-  return <HotelsPage 
+  return <HotelsPage
     hotels={hotels}
     leaflet={leaflet}
     mapData={mapData}

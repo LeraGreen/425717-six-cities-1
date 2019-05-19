@@ -5,4 +5,4 @@ export default {
   isMarker: true,
   iconUrl: `img/pin.svg`,
   iconSize: [30, 30]
-}
+};
