@@ -22,9 +22,13 @@ class HotelsPage extends PureComponent {
   }
 
   render() {
-    const {hotels} = this.props;
+    const {hotels, leaflet, mapData} = this.props;
 
-    const map = <Map hotels={hotels} />;
+    const map = <Map
+      hotels={hotels}
+      leaflet={leaflet}
+      mapData={mapData}
+    />;
     const listItems = hotels.map((item, i) => (
       <HotelCard
         key={i}
@@ -150,7 +154,16 @@ HotelsPage.propTypes = {
     rating: PropTypes.number.isRequired,
     photo: PropTypes.string.isRequired,
     coordinates: PropTypes.arrayOf(PropTypes.number)
-  })).isRequired
+  })).isRequired,
+  leaflet: PropTypes.object.isRequired,
+  mapData: PropTypes.shape({
+    city: PropTypes.arrayOf(PropTypes.number),
+    zoom: PropTypes.number,
+    isZoomControl: PropTypes.bool,
+    isMarker: PropTypes.bool,
+    iconUrl: PropTypes.string,
+    iconSize: PropTypes.arrayOf(PropTypes.number)
+  }).isRequired
 };
 
 export default HotelsPage;
