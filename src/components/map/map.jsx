@@ -5,7 +5,6 @@ import leaflet from "leaflet";
 class Map extends PureComponent {
   constructor(props) {
     super(props);
-    this.mapRef = React.createRef();
     this.map = null;
     this.city = [52.38333, 4.9];
     this.zoom = 12;
@@ -15,7 +14,7 @@ class Map extends PureComponent {
 
   render() {
     return <section className="cities__map">
-      <div id="map" ref={this.mapRef} style={{height: `100%`}}></div>
+      <div id="map" style={{height: `100%`}}></div>
     </section>;
   }
 
