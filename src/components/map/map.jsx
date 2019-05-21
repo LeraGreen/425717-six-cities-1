@@ -27,10 +27,11 @@ class Map extends PureComponent {
     this.map.setView(mapData.city, mapData.zoom);
 
     this.leaflet
-    .tileLayer(`https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png`, {
-      attribution: `&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>`
-    })
-    .addTo(this.map);
+      .tileLayer(`https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png`, {
+        attribution: `&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>`
+      })
+      .addTo(this.map);
+
     this._addPins(hotels, mapData.iconUrl, mapData.iconSize);
   }
 
@@ -42,8 +43,8 @@ class Map extends PureComponent {
 
     for (let hotel of hotels) {
       this.leaflet
-      .marker(hotel[`coordinates`], {icon})
-      .addTo(this.map);
+        .marker(hotel[`coordinates`], {icon})
+        .addTo(this.map);
     }
   }
 }
@@ -55,16 +56,16 @@ Map.propTypes = {
     type: PropTypes.string.isRequired,
     rating: PropTypes.number.isRequired,
     photo: PropTypes.string.isRequired,
-    coordinates: PropTypes.arrayOf(PropTypes.number)
+    coordinates: PropTypes.arrayOf(PropTypes.number).isRequired
   })).isRequired,
   leaflet: PropTypes.object.isRequired,
   mapData: PropTypes.shape({
-    city: PropTypes.arrayOf(PropTypes.number),
-    zoom: PropTypes.number,
-    isZoomControl: PropTypes.bool,
-    isMarker: PropTypes.bool,
-    iconUrl: PropTypes.string,
-    iconSize: PropTypes.arrayOf(PropTypes.number)
+    city: PropTypes.arrayOf(PropTypes.number).isRequired,
+    zoom: PropTypes.number.isRequired,
+    isZoomControl: PropTypes.bool.isRequired,
+    isMarker: PropTypes.bool.isRequired,
+    iconUrl: PropTypes.string.isRequired,
+    iconSize: PropTypes.arrayOf(PropTypes.number).isRequired
   }).isRequired
 };
 

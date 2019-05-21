@@ -10,14 +10,16 @@ const mock = {
       price: 120,
       type: `Apartment`,
       rating: 93,
-      photo: `img/apartment-01.jpg`
+      photo: `img/apartment-01.jpg`,
+      coordinates: [52.3809588843508, 4.939309666406198]
     },
     {
       description: `Wood and stone place`,
       price: 200,
       type: `Private Room`,
       rating: 80,
-      photo: `img/apartment-02.jpg`
+      photo: `img/apartment-02.jpg`,
+      coordinates: [52.3809553943508, 4.939309666406198]
     }
   ],
   mapData: {

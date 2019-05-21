@@ -9,7 +9,8 @@ const mock = {
     price: 120,
     type: `Apartment`,
     rating: 70,
-    photo: `img/apartment-01.jpg`
+    photo: `img/apartment-01.jpg`,
+    coordinates: [52.369553943508, 4.85309666406198]
   }
 };
 

@@ -52,7 +52,7 @@ HotelCard.propTypes = {
     type: PropTypes.string.isRequired,
     rating: PropTypes.number.isRequired,
     photo: PropTypes.string.isRequired,
-    coordinate: PropTypes.arrayOf(PropTypes.number)
+    coordinates: PropTypes.arrayOf(PropTypes.number).isRequired
   }).isRequired,
   onClick: PropTypes.func,
   index: PropTypes.number
