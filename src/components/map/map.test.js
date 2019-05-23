@@ -1,7 +1,7 @@
-import React, {Component} from "react";
+import React from "react";
 import renderer from "react-test-renderer";
 
-import App from "./app.jsx";
+import Map from "./map.jsx";
 
 const mock = {
   hotels: [
@@ -9,25 +9,17 @@ const mock = {
       description: `Beautiful & luxurious apartment at great location`,
       price: 120,
       type: `Apartment`,
-      rating: 20,
+      rating: 93,
       photo: `img/apartment-01.jpg`,
-      coordinates: [52.3909553943508, 4.929309666406198]
+      coordinates: [52.3809588843508, 4.939309666406198]
     },
     {
       description: `Wood and stone place`,
       price: 200,
       type: `Private Room`,
-      rating: 10,
+      rating: 80,
       photo: `img/apartment-02.jpg`,
-      coordinates: [52.3909553943508, 4.929309666406198]
-    },
-    {
-      description: `Canal View Prinsengracht`,
-      price: 80,
-      type: `Private Room`,
-      rating: 0,
-      photo: `img/apartment-03.jpg`,
-      coordinates: [52.3909553943508, 4.929309666406198]
+      coordinates: [52.3809553943508, 4.939309666406198]
     }
   ],
   mapData: {
@@ -60,13 +52,14 @@ const mock = {
   }
 };
 
-it(`App renders correctly`, () => {
-  const {hotels, mapData, leaflet} = mock;
+it(`Map renders correctly`, () => {
+  const {hotels, leaflet, mapData} = mock;
+
   const tree = renderer
-    .create(<App 
+    .create(<Map 
       hotels={hotels}
-      mapData={mapData}
       leaflet={leaflet}
+      mapData={mapData}
       />)
     .toJSON();
 

@@ -1,6 +1,7 @@
 import React, {PureComponent} from "react";
 import PropTypes from "prop-types";
 
+import Map from "../map/map.jsx";
 import HotelCard from "../hotel-card/hotel-card.jsx";
 
 class HotelsPage extends PureComponent {
@@ -21,8 +22,13 @@ class HotelsPage extends PureComponent {
   }
 
   render() {
-    const {hotels} = this.props;
+    const {hotels, leaflet, mapData} = this.props;
 
+    const map = <Map
+      hotels={hotels}
+      leaflet={leaflet}
+      mapData={mapData}
+    />;
     const listItems = hotels.map((item, i) => (
       <HotelCard
         key={i}
@@ -131,7 +137,7 @@ class HotelsPage extends PureComponent {
               </div>
             </section>
             <div className="cities__right-section">
-              <section className="cities__map map"></section>
+              {map}
             </div>
           </div>
         </div>
@@ -146,8 +152,18 @@ HotelsPage.propTypes = {
     price: PropTypes.number.isRequired,
     type: PropTypes.string.isRequired,
     rating: PropTypes.number.isRequired,
-    photo: PropTypes.string.isRequired
-  })).isRequired
+    photo: PropTypes.string.isRequired,
+    coordinates: PropTypes.arrayOf(PropTypes.number).isRequired
+  })).isRequired,
+  leaflet: PropTypes.object.isRequired,
+  mapData: PropTypes.shape({
+    city: PropTypes.arrayOf(PropTypes.number).isRequired,
+    zoom: PropTypes.number.isRequired,
+    isZoomControl: PropTypes.bool.isRequired,
+    isMarker: PropTypes.bool.isRequired,
+    iconUrl: PropTypes.string.isRequired,
+    iconSize: PropTypes.arrayOf(PropTypes.number).isRequired
+  }).isRequired
 };
 
 export default HotelsPage;
