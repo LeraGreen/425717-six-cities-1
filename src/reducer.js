@@ -1,4 +1,4 @@
-const state = {
+const initialState = {
   city: `Amsterdam`,
   offers: [
     {
@@ -18,19 +18,24 @@ const state = {
       coordinates: [52.3909553943508, 4.85309666406198]
     }
   ]
-};
+};  
 
-// {
+// const action = {
 //   type: 'CHANGE_CITY',
-//   payload: `New City`
-// }   
+//   payload: `Helsinki`
+// }
 
 const reducer = (state = initialState, action) => {
-  if (action.type === CHANGE_CITY) {
+  if (action.type === `CHANGE_CITY`) {
     return Object.assign({}, state, {
       city: action.payload
     })
-  }
+  } 
 
   return state;
 };
+
+// store.dispatch(action);
+
+export default reducer;
+
