@@ -5,15 +5,12 @@ import City from "../city/city.jsx"
 import Map from "../map/map.jsx";
 import HotelCard from "../hotel-card/hotel-card.jsx";
 
-import {connect} from "react-redux";
-
 class HotelsPage extends PureComponent {
   constructor(props) {
     super(props);
 
     this.state = {
-      activeCard: -1,
-      activeCity: `Paris`
+      activeCard: -1
     };
 
     this._onCardClick = this._onCardClick.bind(this);
@@ -27,14 +24,12 @@ class HotelsPage extends PureComponent {
   };
 
   _onCityClick(name) {
-    this.setState({
-      activeCity: name
-    });
+    this.props.onClick(name);
   };
 
   render() {
-    const {hotels, cities, leaflet, mapData} = this.props;
-    const activeCityHotels = hotels.filter((item) => item.city === this.state.activeCity);
+    const {hotels, cities, leaflet, mapData, activeCity} = this.props;
+    const activeCityHotels = hotels.filter((item) => item.city === activeCity);
 
     const map = <Map
       hotels={hotels}
@@ -54,7 +49,7 @@ class HotelsPage extends PureComponent {
         key={i}
         city={item}
         onClick={this._onCityClick}
-        isActive={this.state.activeCity === item}
+        isActive={activeCity === item}
       />
     );
 
@@ -99,7 +94,7 @@ class HotelsPage extends PureComponent {
           <div className="cities__places-container container">
             <section className="cities__places places">
               <h2 className="visually-hidden">Places</h2>
-              <b className="places__found">312 places to stay in {this.state.activeCity}</b>
+              <b className="places__found">312 places to stay in {activeCity}</b>
               <form className="places__sorting" action="#" method="get">
                 <span className="places__sorting-caption">Sort by</span>
                 <span className="places__sorting-type" tabIndex="0">

@@ -11,14 +11,6 @@ import {reducer} from "./reducer.js";
 
 const init = () => {
   const store = createStore(reducer);
-  console.log(store.getState());
-  store.dispatch(
-    {
-      type: `CHANGE_ACTIVE_CITY`,
-      payload: `Житомир`
-    }
-  );
-  console.log(store.getState());
 
   ReactDOM.render(
       <App 
@@ -26,6 +18,7 @@ const init = () => {
         cities={cities}
         leaflet={leaflet}
         mapData={mapData}
+        store={store}
       />,
       document.getElementById(`root`)
   );
