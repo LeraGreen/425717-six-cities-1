@@ -1,7 +1,7 @@
 const hotels = [
   {
     city: `Paris`,
-    description: `Beautiful & luxurious apartment at great location`,
+    description: `Неняшное место в Париже`,
     price: 120,
     type: `Apartment`,
     rating: 93,
@@ -10,7 +10,7 @@ const hotels = [
   },
   {
     city: `Paris`,
-    description: `Wood and stone place`,
+    description: `Няшное место в Париже`,
     price: 200,
     type: `Private Room`,
     rating: 80,
@@ -19,7 +19,7 @@ const hotels = [
   },
   {
     city: `Cologne`,
-    description: `Canal View Prinsengracht`,
+    description: `Квартира в Кологне`,
     price: 80,
     type: `Private Room`,
     rating: 100,
@@ -28,7 +28,7 @@ const hotels = [
   },
   {
     city: `Cologne`,
-    description: `Nice, cozy, warm big bed apartment`,
+    description: `Колонна в Кологне`,
     price: 90,
     type: `Apartment`,
     rating: 80,
@@ -37,7 +37,7 @@ const hotels = [
   },
   {
     city: `Amsterdam`,
-    description: `Nice, cozy, warm big bed apartment`,
+    description: `Хостел в Амстере`,
     price: 90,
     type: `Apartment`,
     rating: 80,
@@ -46,7 +46,7 @@ const hotels = [
   },
   {
     city: `Brussels`,
-    description: `Nice, cozy, warm big bed apartment`,
+    description: `Хостел в Брюсселе`,
     price: 90,
     type: `Apartment`,
     rating: 80,
@@ -55,7 +55,7 @@ const hotels = [
   },
   {
     city: `Dusseldorf`,
-    description: `Nice, cozy, warm big bed apartment`,
+    description: `Нормальная хата в Дюссельдорфа`,
     price: 90,
     type: `Apartment`,
     rating: 80,

@@ -34,13 +34,14 @@ class HotelsPage extends PureComponent {
 
   render() {
     const {hotels, cities, leaflet, mapData} = this.props;
+    const activeCityHotels = hotels.filter((item) => item.city === this.state.activeCity);
 
     const map = <Map
       hotels={hotels}
       leaflet={leaflet}
       mapData={mapData}
     />;
-    const listItems = hotels.map((item, i) => 
+    const listItems = activeCityHotels.map((item, i) => 
       <HotelCard
         key={i}
         hotel={item}
