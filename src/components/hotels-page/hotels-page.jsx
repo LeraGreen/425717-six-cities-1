@@ -1,42 +1,61 @@
 import React, {PureComponent} from "react";
 import PropTypes from "prop-types";
 
+import City from "../city/city.jsx"
 import Map from "../map/map.jsx";
 import HotelCard from "../hotel-card/hotel-card.jsx";
+
+import {connect} from "react-redux";
 
 class HotelsPage extends PureComponent {
   constructor(props) {
     super(props);
 
     this.state = {
-      activeCard: -1
+      activeCard: -1,
+      activeCity: `Paris`
     };
 
-    this._onClick = this._onClick.bind(this);
+    this._onCardClick = this._onCardClick.bind(this);
+    this._onCityClick = this._onCityClick.bind(this);
   }
 
-  _onClick(index) {
+  _onCardClick(index) {
     this.setState({
       activeCard: index
     });
-  }
+  };
+
+  _onCityClick(name) {
+    this.setState({
+      activeCity: name
+    });
+  };
 
   render() {
-    const {hotels, leaflet, mapData} = this.props;
+    const {hotels, cities, leaflet, mapData} = this.props;
 
     const map = <Map
       hotels={hotels}
       leaflet={leaflet}
       mapData={mapData}
     />;
-    const listItems = hotels.map((item, i) => (
+    const listItems = hotels.map((item, i) => 
       <HotelCard
         key={i}
         hotel={item}
         index={i}
-        onClick={this._onClick}
+        onClick={this._onCardClick}
       />
-    ));
+    );
+    const listCities = cities.map((item, i) => 
+      <City
+        key={i}
+        city={item}
+        onClick={this._onCityClick}
+        isActive={this.state.activeCity === item}
+      />
+    );
 
     return <React.Fragment>
       <div style={{display: `none`}}>
@@ -71,36 +90,7 @@ class HotelsPage extends PureComponent {
         <div className="cities tabs">
           <section className="locations container">
             <ul className="locations__list tabs__list">
-              <li className="locations__item">
-                <a className="locations__item-link tabs__item" href="#">
-                  <span>Paris</span>
-                </a>
-              </li>
-              <li className="locations__item">
-                <a className="locations__item-link tabs__item" href="#">
-                  <span>Cologne</span>
-                </a>
-              </li>
-              <li className="locations__item">
-                <a className="locations__item-link tabs__item" href="#">
-                  <span>Brussels</span>
-                </a>
-              </li>
-              <li className="locations__item">
-                <a className="locations__item-link tabs__item tabs__item--active">
-                  <span>Amsterdam</span>
-                </a>
-              </li>
-              <li className="locations__item">
-                <a className="locations__item-link tabs__item" href="#">
-                  <span>Hamburg</span>
-                </a>
-              </li>
-              <li className="locations__item">
-                <a className="locations__item-link tabs__item" href="#">
-                  <span>Dusseldorf</span>
-                </a>
-              </li>
+              {listCities}
             </ul>
           </section>
         </div>
@@ -108,7 +98,7 @@ class HotelsPage extends PureComponent {
           <div className="cities__places-container container">
             <section className="cities__places places">
               <h2 className="visually-hidden">Places</h2>
-              <b className="places__found">312 places to stay in Amsterdam</b>
+              <b className="places__found">312 places to stay in {this.state.activeCity}</b>
               <form className="places__sorting" action="#" method="get">
                 <span className="places__sorting-caption">Sort by</span>
                 <span className="places__sorting-type" tabIndex="0">
@@ -155,6 +145,7 @@ HotelsPage.propTypes = {
     photo: PropTypes.string.isRequired,
     coordinates: PropTypes.arrayOf(PropTypes.number).isRequired
   })).isRequired,
+  cities: PropTypes.arrayOf(PropTypes.string).isRequired,
   leaflet: PropTypes.object.isRequired,
   mapData: PropTypes.shape({
     city: PropTypes.arrayOf(PropTypes.number).isRequired,

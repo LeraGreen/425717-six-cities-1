@@ -1,4 +1,4 @@
-export default [
+const hotels = [
   {
     description: `Beautiful & luxurious apartment at great location`,
     price: 120,
@@ -32,3 +32,7 @@ export default [
     coordinates: [52.3809553943508, 4.939309666406198]
   }
 ];
+
+const cities = [`Paris`, `Cologne`, `Brussels`, `Amsterdam`, `Hamburg`, `Dusseldorf`];
+
+export {hotels, cities};

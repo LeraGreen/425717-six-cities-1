@@ -2,12 +2,14 @@ import React from "react";
 import PropTypes from "prop-types";
 
 import HotelsPage from "../hotels-page/hotels-page.jsx";
+import reducer from "../../reducer.js";
 
 const App = (props) => {
-  const {hotels, leaflet, mapData} = props;
+  const {hotels, cities, leaflet, mapData} = props;
 
   return <HotelsPage
     hotels={hotels}
+    cities={cities}
     leaflet={leaflet}
     mapData={mapData}
   />;
@@ -22,6 +24,7 @@ App.propTypes = {
     photo: PropTypes.string.isRequired,
     coordinates: PropTypes.arrayOf(PropTypes.number)
   })).isRequired,
+  cities: PropTypes.arrayOf(PropTypes.string).isRequired,
   leaflet: PropTypes.object.isRequired,
   mapData: PropTypes.shape({
     city: PropTypes.arrayOf(PropTypes.number),
