@@ -16,4 +16,11 @@ const reducer = (state = initialState, action) => {
   return state;
 }
 
-export {reducer};
+const changeCity = (name) => {
+  return {
+    type: `CHANGE_ACTIVE_CITY`,
+    payload: name
+  }
+};
+
+export {reducer, changeCity};
