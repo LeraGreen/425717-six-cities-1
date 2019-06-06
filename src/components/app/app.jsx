@@ -48,6 +48,7 @@ const mapStateToProps = (state, ownProps) => {
 };
 
 // TODO менять activeCard на -1 каждый раз когда открывается новый город 
+// TODO Не забудьте, что все отрисованные предложения соответствующие отбору, также должны быть отрисованы на карте в виде пинов
 
 const mapDispatchToProps = (dispatch) => {
   return {
