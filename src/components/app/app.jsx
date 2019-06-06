@@ -3,10 +3,11 @@ import React from "react";
 import PropTypes from "prop-types";
 
 import {changeCity} from "../../reducer.js";
+// import {changeCard} from "../../reducer.js";
 import HotelsPage from "../hotels-page/hotels-page.jsx";
 
 const App = (props) => { 
-  const {hotels, cities, leaflet, mapData, activeCity, onClick} = props;
+  const {hotels, cities, leaflet, mapData, activeCity, onCityClick} = props;
 
   return <HotelsPage
     hotels={hotels}
@@ -14,7 +15,7 @@ const App = (props) => {
     leaflet={leaflet}
     mapData={mapData}
     activeCity={activeCity}
-    onClick={onClick}
+    onCityClick={onCityClick}
   />;
 };
 
@@ -47,7 +48,7 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    onClick: (name) => {
+    onCityClick: (name) => {
       dispatch(changeCity(name))
     }
   };

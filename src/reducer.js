@@ -23,4 +23,11 @@ const changeCity = (name) => {
   }
 };
 
-export {reducer, changeCity};
+const changeCard = (index) => {
+  return {
+    type: `CHANGE_ACTIVE_CITY`,
+    payload: index
+  }
+};
+
+export {reducer, changeCity, changeCard};
