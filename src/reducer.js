@@ -25,7 +25,7 @@ const changeCity = (name) => {
 
 const changeCard = (index) => {
   return {
-    type: `CHANGE_ACTIVE_CITY`,
+    type: `CHANGE_ACTIVE_CARD`,
     payload: index
   }
 };

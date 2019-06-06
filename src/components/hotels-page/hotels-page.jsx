@@ -9,18 +9,12 @@ class HotelsPage extends PureComponent {
   constructor(props) {
     super(props);
 
-    this.state = {
-      activeCard: -1
-    };
-
     this._onCardClick = this._onCardClick.bind(this);
     this._onCityClick = this._onCityClick.bind(this);
   }
 
   _onCardClick(index) {
-    this.setState({
-      activeCard: index
-    });
+    this.props.onCardClick(index);
   };
 
   _onCityClick(name) {
@@ -41,7 +35,7 @@ class HotelsPage extends PureComponent {
         key={i}
         hotel={item}
         index={i}
-        onCityClick={this._onCardClick}
+        onCardClick={this._onCardClick}
       />
     );
     const listCities = cities.map((item, i) => 

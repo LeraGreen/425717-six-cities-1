@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 
 const HotelCard = (props) => {
-  const {hotel, onClick, index} = props;
+  const {hotel, onCardClick, index} = props;
 
   return <article className="cities__place-card place-card">
     <div className="place-card__mark">
@@ -33,9 +33,9 @@ const HotelCard = (props) => {
         </div>
       </div>
       <h2 className="place-card__name" onClick={(evt) => {
-        if (onClick && index !== undefined) {
+        if (onCardClick && index !== undefined) {
           evt.preventDefault();
-          onClick(index);
+          onCardClick(index);
         }
       }}>
         <a href="#">{hotel.description}</a>
@@ -54,7 +54,7 @@ HotelCard.propTypes = {
     photo: PropTypes.string.isRequired,
     coordinates: PropTypes.arrayOf(PropTypes.number).isRequired
   }).isRequired,
-  onClick: PropTypes.func,
+  onCardClick: PropTypes.func,
   index: PropTypes.number
 };
 

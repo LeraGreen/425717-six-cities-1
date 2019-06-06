@@ -2,12 +2,11 @@ import {connect} from "react-redux";
 import React from "react";
 import PropTypes from "prop-types";
 
-import {changeCity} from "../../reducer.js";
-// import {changeCard} from "../../reducer.js";
+import {changeCity, changeCard} from "../../reducer.js";
 import HotelsPage from "../hotels-page/hotels-page.jsx";
 
 const App = (props) => { 
-  const {hotels, cities, leaflet, mapData, activeCity, onCityClick} = props;
+  const {hotels, cities, leaflet, mapData, activeCity, onCityClick, onCardClick} = props;
 
   return <HotelsPage
     hotels={hotels}
@@ -16,6 +15,7 @@ const App = (props) => {
     mapData={mapData}
     activeCity={activeCity}
     onCityClick={onCityClick}
+    onCardClick={onCardClick}
   />;
 };
 
@@ -42,14 +42,20 @@ App.propTypes = {
 
 const mapStateToProps = (state, ownProps) => {
   return Object.assign({} ,ownProps, {
-    activeCity: state.activeCity
+    activeCity: state.activeCity,
+    activeCard: state.activeCard
   });
 };
+
+// TODO менять activeCard на -1 каждый раз когда открывается новый город 
 
 const mapDispatchToProps = (dispatch) => {
   return {
     onCityClick: (name) => {
       dispatch(changeCity(name))
+    },
+    onCardClick: (index) => {
+      dispatch(changeCard(index))
     }
   };
 };
