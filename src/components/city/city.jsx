@@ -18,7 +18,10 @@ const City = (props) => {
 City.propTypes = {
   city: PropTypes.string.isRequired,
   onCityClick: PropTypes.func.isRequired,
+  onCardClick: PropTypes.func.isRequired,
   isActive: PropTypes.bool.isRequired
 };
+
+
 
 export default City;

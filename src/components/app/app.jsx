@@ -31,20 +31,20 @@ App.propTypes = {
   cities: PropTypes.arrayOf(PropTypes.shape({
     city: PropTypes.string,
     location: PropTypes.shape({
-      latitude: PropTypes.number,
-      longitude: PropTypes.number,
+      coordinates: PropTypes.arrayOf(PropTypes.number),
       zoom: PropTypes.number
     }).isRequired
   })).isRequired,
   leaflet: PropTypes.object.isRequired,
   mapData: PropTypes.shape({
-    city: PropTypes.arrayOf(PropTypes.number),
-    zoom: PropTypes.number,
     isZoomControl: PropTypes.bool,
     isMarker: PropTypes.bool,
     iconUrl: PropTypes.string,
     iconSize: PropTypes.arrayOf(PropTypes.number)
-  }).isRequired
+  }).isRequired,
+  activeCity: PropTypes.string.isRequired,
+  onCityClick: PropTypes.func.isRequired,
+  onCardClick: PropTypes.func.isRequired
 };
 
 const mapStateToProps = (state, ownProps) => {

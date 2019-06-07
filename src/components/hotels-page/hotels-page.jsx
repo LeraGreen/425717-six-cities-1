@@ -133,32 +133,32 @@ class HotelsPage extends PureComponent {
   }
 }
 
-// HotelsPage.propTypes = {
-//   hotels: PropTypes.arrayOf(PropTypes.shape({
-//     description: PropTypes.string.isRequired,
-//     price: PropTypes.number.isRequired,
-//     type: PropTypes.string.isRequired,
-//     rating: PropTypes.number.isRequired,
-//     photo: PropTypes.string.isRequired,
-//     coordinates: PropTypes.arrayOf(PropTypes.number).isRequired
-//   })).isRequired,
-//   cities: PropTypes.arrayOf(PropTypes.shape({
-//     city: PropTypes.string,
-//     location: PropTypes.shape({
-//       latitude: PropTypes.number,
-//       longitude: PropTypes.number,
-//       zoom: PropTypes.number
-//     }).isRequired
-//   })).isRequired,
-//   leaflet: PropTypes.object.isRequired,
-//   mapData: PropTypes.shape({
-//     city: PropTypes.arrayOf(PropTypes.number).isRequired,
-//     zoom: PropTypes.number.isRequired,
-//     isZoomControl: PropTypes.bool.isRequired,
-//     isMarker: PropTypes.bool.isRequired,
-//     iconUrl: PropTypes.string.isRequired,
-//     iconSize: PropTypes.arrayOf(PropTypes.number).isRequired
-//   }).isRequired
-// };
+HotelsPage.propTypes = {
+  hotels: PropTypes.arrayOf(PropTypes.shape({
+    description: PropTypes.string.isRequired,
+    price: PropTypes.number.isRequired,
+    type: PropTypes.string.isRequired,
+    rating: PropTypes.number.isRequired,
+    photo: PropTypes.string.isRequired,
+    coordinates: PropTypes.arrayOf(PropTypes.number)
+  })).isRequired,
+  cities: PropTypes.arrayOf(PropTypes.shape({
+    city: PropTypes.string,
+    location: PropTypes.shape({
+      coordinates: PropTypes.arrayOf(PropTypes.number),
+      zoom: PropTypes.number
+    }).isRequired
+  })).isRequired,
+  leaflet: PropTypes.object.isRequired,
+  mapData: PropTypes.shape({
+    isZoomControl: PropTypes.bool,
+    isMarker: PropTypes.bool,
+    iconUrl: PropTypes.string,
+    iconSize: PropTypes.arrayOf(PropTypes.number)
+  }).isRequired,
+  activeCity: PropTypes.string.isRequired,
+  onCityClick: PropTypes.func.isRequired,
+  onCardClick: PropTypes.func.isRequired
+};
 
 export default HotelsPage;
