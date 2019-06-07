@@ -38,7 +38,7 @@ class Map extends PureComponent {
 
   componentDidUpdate() {
     const {hotels, mapData, city} = this.props;
-    
+
     this.map.setView(city.location.coordinates, city.location.zoom);
     this._clearPins();
     this._addPins(hotels, mapData.iconUrl, mapData.iconSize);

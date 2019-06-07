@@ -1,7 +1,7 @@
 import React, {PureComponent} from "react";
 import PropTypes from "prop-types";
 
-import City from "../city/city.jsx"
+import City from "../city/city.jsx";
 import Map from "../map/map.jsx";
 import HotelCard from "../hotel-card/hotel-card.jsx";
 
@@ -15,20 +15,16 @@ class HotelsPage extends PureComponent {
 
   _onCardClick(index) {
     this.props.onCardClick(index);
-  };
+  }
 
   _onCityClick(name) {
     this.props.onCityClick(name);
-  };
+  }
 
   render() {
     const {hotels, cities, leaflet, mapData, activeCity} = this.props;
     const activeCityHotels = hotels.filter((item) => item.city === activeCity);
-    const activeCityData = cities.find((item) => {
-      if (item.city === activeCity) {
-        return item;
-      }
-    });
+    const activeCityData = cities.find((item) => item.city === activeCity);
 
     const map = <Map
       hotels={activeCityHotels}
@@ -36,7 +32,7 @@ class HotelsPage extends PureComponent {
       leaflet={leaflet}
       mapData={mapData}
     />;
-    const listItems = activeCityHotels.map((item, i) => 
+    const listItems = activeCityHotels.map((item, i) =>
       <HotelCard
         key={i}
         hotel={item}
@@ -44,7 +40,7 @@ class HotelsPage extends PureComponent {
         onCardClick={this._onCardClick}
       />
     );
-    const listCities = cities.map((item, i) => 
+    const listCities = cities.map((item, i) =>
       <City
         key={i}
         city={item.city}

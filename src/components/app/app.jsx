@@ -5,7 +5,7 @@ import PropTypes from "prop-types";
 import {changeCity, changeCard} from "../../reducer.js";
 import HotelsPage from "../hotels-page/hotels-page.jsx";
 
-const App = (props) => { 
+const App = (props) => {
   const {hotels, cities, leaflet, mapData, activeCity, onCityClick, onCardClick} = props;
 
   return <HotelsPage
@@ -48,7 +48,7 @@ App.propTypes = {
 };
 
 const mapStateToProps = (state, ownProps) => {
-  return Object.assign({} ,ownProps, {
+  return Object.assign({}, ownProps, {
     activeCity: state.activeCity,
     activeCard: state.activeCard
   });
@@ -57,10 +57,10 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     onCityClick: (name) => {
-      dispatch(changeCity(name))
+      dispatch(changeCity(name));
     },
     onCardClick: (index) => {
-      dispatch(changeCard(index))
+      dispatch(changeCard(index));
     }
   };
 };
