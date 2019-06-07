@@ -6,7 +6,7 @@ const hotels = [
     type: `Apartment`,
     rating: 93,
     photo: `img/apartment-01.jpg`,
-    coordinates: [52.3909553943508, 4.85309666406198]
+    coordinates: [48.858093, 2.294694]
   },
   {
     city: `Paris`,
@@ -15,7 +15,7 @@ const hotels = [
     type: `Private Room`,
     rating: 80,
     photo: `img/apartment-02.jpg`,
-    coordinates: [52.369553943508, 4.85309666406198]
+    coordinates: [48.849127, 2.396053]
   },
   {
     city: `Cologne`,
@@ -33,7 +33,7 @@ const hotels = [
     type: `Apartment`,
     rating: 80,
     photo: `img/apartment-02.jpg`,
-    coordinates: [52.3809553943508, 4.939309666406198]
+    coordinates: [50.937778, 6.982968]
   },
   {
     city: `Amsterdam`,
@@ -42,7 +42,7 @@ const hotels = [
     type: `Apartment`,
     rating: 80,
     photo: `img/apartment-02.jpg`,
-    coordinates: [52.3809553943508, 4.939309666406198]
+    coordinates: [52.364045, 4.878791]
   },
   {
     city: `Brussels`,
@@ -51,7 +51,7 @@ const hotels = [
     type: `Apartment`,
     rating: 80,
     photo: `img/apartment-02.jpg`,
-    coordinates: [52.3809553943508, 4.939309666406198]
+    coordinates: [50.848023, 4.359833]
   },
   {
     city: `Dusseldorf`,
@@ -60,7 +60,7 @@ const hotels = [
     type: `Apartment`,
     rating: 80,
     photo: `img/apartment-02.jpg`,
-    coordinates: [52.3809553943508, 4.939309666406198]
+    coordinates: [51.251528, 6.770632]
   }
 ];
 
