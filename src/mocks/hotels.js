@@ -24,7 +24,7 @@ const hotels = [
     type: `Private Room`,
     rating: 100,
     photo: `img/apartment-03.jpg`,
-    coordinates: [52.3909553943508, 4.929309666406198]
+    coordinates: [50.999999, 6.982900]
   },
   {
     city: `Cologne`,
@@ -68,48 +68,42 @@ const cities = [
   {
     city: `Paris`,
     location: {
-      latitude: 48.864716,
-      longitude: 2.349014,
+      coordinates: [48.864716, 2.349014],
       zoom: 10
     }
   },
   {
     city: `Cologne`,
     location: {
-      latitude: 50.941357,
-      longitude: 6.958307,
+      coordinates: [50.941357, 6.958307],
       zoom: 10
     }
   },
   {
     city: `Brussels`,
     location: {
-      latitude: 50.85045,
-      longitude: 4.34878,
+      coordinates: [50.85045, 4.34878],
       zoom: 10
     }
   },
   {
     city: `Amsterdam`,
     location: {
-      latitude: 52.37403,
-      longitude: 4.88969,
+      coordinates: [52.37403, 4.88969],
       zoom: 10
     }
   },
   {
     city: `Hamburg`,
     location: {
-      latitude: 53.551086,
-      longitude: 9.993682,
+      coordinates: [53.551086, 9.993682],
       zoom: 10
     }
   },
   {
     city: `Dusseldorf`,
     location: {
-      latitude: 51.22172,
-      longitude: 6.77616,
+      coordinates: [51.22172, 6.77616],
       zoom: 10
     }
   }
