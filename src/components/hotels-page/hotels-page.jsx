@@ -41,10 +41,10 @@ class HotelsPage extends PureComponent {
     const listCities = cities.map((item, i) => 
       <City
         key={i}
-        city={item}
+        city={item.city}
         onCityClick={this._onCityClick}
         onCardClick={this._onCardClick}
-        isActive={activeCity === item}
+        isActive={activeCity === item.city}
       />
     );
 
@@ -136,7 +136,14 @@ HotelsPage.propTypes = {
     photo: PropTypes.string.isRequired,
     coordinates: PropTypes.arrayOf(PropTypes.number).isRequired
   })).isRequired,
-  cities: PropTypes.arrayOf(PropTypes.string).isRequired,
+  cities: PropTypes.arrayOf(PropTypes.shape({
+    city: PropTypes.string,
+    location: PropTypes.shape({
+      latitude: PropTypes.number,
+      longitude: PropTypes.number,
+      zoom: PropTypes.number
+    }).isRequired
+  })).isRequired,
   leaflet: PropTypes.object.isRequired,
   mapData: PropTypes.shape({
     city: PropTypes.arrayOf(PropTypes.number).isRequired,

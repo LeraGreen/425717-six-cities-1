@@ -28,7 +28,14 @@ App.propTypes = {
     photo: PropTypes.string.isRequired,
     coordinates: PropTypes.arrayOf(PropTypes.number)
   })).isRequired,
-  cities: PropTypes.arrayOf(PropTypes.string).isRequired,
+  cities: PropTypes.arrayOf(PropTypes.shape({
+    city: PropTypes.string,
+    location: PropTypes.shape({
+      latitude: PropTypes.number,
+      longitude: PropTypes.number,
+      zoom: PropTypes.number
+    }).isRequired
+  })).isRequired,
   leaflet: PropTypes.object.isRequired,
   mapData: PropTypes.shape({
     city: PropTypes.arrayOf(PropTypes.number),
