@@ -8,6 +8,7 @@ configure({adapter: new Adapter()});
 
 const mock = {
   hotel: {
+    city: `Paris`,
     description: `Some cool place`,
     price: 120,
     type: `Apartment`,
@@ -25,7 +26,7 @@ it(`Click on card's title calls callback`, () => {
     hotel={hotel}
     index={0}
     key={0}
-    onClick = {clickHandler}
+    onCardClick = {clickHandler}
   />);
 
 
@@ -41,7 +42,7 @@ it(`Callback doesn't call if index didn't pass`, () => {
   const card = mount(<HotelCard
     hotel={hotel}
     key={0}
-    onClick = {clickHandler}
+    onCardClick = {clickHandler}
   />);
 
 

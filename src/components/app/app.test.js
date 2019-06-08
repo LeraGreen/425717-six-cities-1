@@ -1,11 +1,12 @@
-import React, {Component} from "react";
+import React from "react";
 import renderer from "react-test-renderer";
 
 import App from "./app.jsx";
 
 const mock = {
   hotels: [
-    {
+    { 
+      city: `Paris`,
       description: `Beautiful & luxurious apartment at great location`,
       price: 120,
       type: `Apartment`,
@@ -14,6 +15,7 @@ const mock = {
       coordinates: [52.3909553943508, 4.929309666406198]
     },
     {
+      city: `Amster`,
       description: `Wood and stone place`,
       price: 200,
       type: `Private Room`,
@@ -22,6 +24,7 @@ const mock = {
       coordinates: [52.3909553943508, 4.929309666406198]
     },
     {
+      city: `Vienna`,
       description: `Canal View Prinsengracht`,
       price: 80,
       type: `Private Room`,
@@ -31,8 +34,6 @@ const mock = {
     }
   ],
   mapData: {
-    city: [52.38333, 4.9],
-    zoom: 10,
     isZoomControl: false,
     isMarker: true,
     iconUrl: `img/pin.svg`,
@@ -57,16 +58,67 @@ const mock = {
         addTo: jest.fn(),
       };
     }
-  }
+  },
+  cities: [
+    {
+      city: `Paris`,
+      location: {
+        coordinates: [48.864716, 2.349014],
+        zoom: 10
+      }
+    },
+    {
+      city: `Cologne`,
+      location: {
+        coordinates: [50.941357, 6.958307],
+        zoom: 10
+      }
+    },
+    {
+      city: `Brussels`,
+      location: {
+        coordinates: [50.85045, 4.34878],
+        zoom: 10
+      }
+    },
+    {
+      city: `Amsterdam`,
+      location: {
+        coordinates: [52.37403, 4.88969],
+        zoom: 10
+      }
+    },
+    {
+      city: `Hamburg`,
+      location: {
+        coordinates: [53.551086, 9.993682],
+        zoom: 10
+      }
+    },
+    {
+      city: `Dusseldorf`,
+      location: {
+        coordinates: [51.22172, 6.77616],
+        zoom: 10
+      }
+    }
+  ],
+  activeCity: `Dusseldorf`,
+  onCityClick: jest.fn(),
+  onCardClick: jest.fn()
 };
 
 it(`App renders correctly`, () => {
-  const {hotels, mapData, leaflet} = mock;
+  const {hotels, cities, leaflet, mapData, activeCity, onCityClick, onCardClick} = mock;
   const tree = renderer
     .create(<App 
       hotels={hotels}
-      mapData={mapData}
+      cities={cities}
       leaflet={leaflet}
+      mapData={mapData}
+      activeCity={activeCity}
+      onCityClick={onCityClick}
+      onCardClick={onCardClick}
       />)
     .toJSON();
 
