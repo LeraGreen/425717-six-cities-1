@@ -33,10 +33,8 @@ const HotelCard = (props) => {
         </div>
       </div>
       <h2 className="place-card__name" onClick={(evt) => {
-        if (onCardClick && index !== undefined) {
-          evt.preventDefault();
-          onCardClick(index);
-        }
+        evt.preventDefault();
+        onCardClick(index);
       }}>
         <a href="#">{hotel.description}</a>
       </h2>
