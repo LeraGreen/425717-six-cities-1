@@ -1,7 +1,7 @@
 import React from "react";
 import renderer from "react-test-renderer";
 
-import App from "./app.jsx";
+import App, {mapDispatchToProps, mapStateToProps} from "./app.jsx";
 
 const mock = {
   hotels: [
@@ -123,4 +123,21 @@ it(`App renders correctly`, () => {
     .toJSON();
 
   expect(tree).toMatchSnapshot();
+});
+
+it(`mapStateToProps updates state correctly`, () => {
+  const updatedState = mapStateToProps(
+    {
+      activeCard: 12,
+      activeCity: `Cologne`
+    },
+    {
+      activeCard: -1,
+      activeCity: `Paris`
+    });
+
+  expect(updatedState).toEqual({
+    activeCard: 12,
+    activeCity: `Cologne`
+  })
 });
