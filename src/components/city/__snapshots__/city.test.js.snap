@@ -10,23 +10,7 @@ exports[`App is rendered correctly 1`] = `
     onClick={[Function]}
   >
     <span>
-      Chelyaba
-    </span>
-  </a>
-</li>
-`;
-
-exports[`App renders correctly 1`] = `
-<li
-  className="locations__item"
->
-  <a
-    className="locations__item-link tabs__item tabs__item--active"
-    href="#"
-    onClick={[Function]}
-  >
-    <span>
-      Chelyaba
+      Paris
     </span>
   </a>
 </li>

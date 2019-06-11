@@ -6,18 +6,16 @@ import City from "./city.jsx";
 const mock = {
   city: `Paris`,
   isActive: true,
-  onCityChange: jest.fn(),
-  onCardActivate: jest.fn()
+  onCityChange: jest.fn()
 };
 
 it(`App is rendered correctly`, () => {
-  const {city, onCityChange, onCardActivate, isActive} = mock;
+  const {city, onCityChange, isActive} = mock;
   const tree = renderer
     .create(<City 
       city={city}
       isActive={isActive}
       onCityChange={onCityChange}
-      onCardActivate={onCardActivate}
     />)
     .toJSON();
 
