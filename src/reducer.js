@@ -4,16 +4,20 @@ const initialState = {
 };
 
 const reducer = (state = initialState, action) => {
-  if (action.type === `CHANGE_ACTIVE_CARD`) {
+  switch(action.type) {
+
+    case `CHANGE_ACTIVE_CARD`:
     return Object.assign({}, state, {
       activeCard: action.payload
     });
-  } else if (action.type === `CHANGE_ACTIVE_CITY`) {
+
+    case `CHANGE_ACTIVE_CITY`:
     return Object.assign({}, state, {
       activeCity: action.payload
     });
+
+    default: return state;
   }
-  return state;
 }
 
 const changeCity = (name) =>

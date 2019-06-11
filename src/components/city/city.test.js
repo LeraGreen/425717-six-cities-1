@@ -4,7 +4,7 @@ import renderer from "react-test-renderer";
 import City from "./city.jsx";
 
 const mock = {
-  city: `Chelyaba`,
+  city: `Paris`,
   isActive: true,
   onCityChange: jest.fn(),
   onCardActivate: jest.fn()
