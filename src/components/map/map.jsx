@@ -81,10 +81,10 @@ Map.propTypes = {
     iconSize: PropTypes.arrayOf(PropTypes.number).isRequired
   }).isRequired,
   city: PropTypes.shape({
-    city: PropTypes.string,
+    city: PropTypes.string.isRequired,
     location: PropTypes.shape({
-      coordinates: PropTypes.arrayOf(PropTypes.number),
-      zoom: PropTypes.number
+      coordinates: PropTypes.arrayOf(PropTypes.number).isRequired,
+      zoom: PropTypes.number.isRequired
     }).isRequired
   }).isRequired
 };

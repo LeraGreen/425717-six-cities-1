@@ -54,8 +54,8 @@ HotelCard.propTypes = {
     photo: PropTypes.string.isRequired,
     coordinates: PropTypes.arrayOf(PropTypes.number).isRequired
   }).isRequired,
-  onCardClick: PropTypes.func,
-  index: PropTypes.number
+  onCardClick: PropTypes.func.isRequired,
+  index: PropTypes.number.isRequired
 };
 
 export default HotelCard;

@@ -136,21 +136,21 @@ HotelsPage.propTypes = {
     type: PropTypes.string.isRequired,
     rating: PropTypes.number.isRequired,
     photo: PropTypes.string.isRequired,
-    coordinates: PropTypes.arrayOf(PropTypes.number)
+    coordinates: PropTypes.arrayOf(PropTypes.number).isRequired
   })).isRequired,
   cities: PropTypes.arrayOf(PropTypes.shape({
-    city: PropTypes.string,
+    city: PropTypes.string.isRequired,
     location: PropTypes.shape({
-      coordinates: PropTypes.arrayOf(PropTypes.number),
-      zoom: PropTypes.number
+      coordinates: PropTypes.arrayOf(PropTypes.number).isRequired,
+      zoom: PropTypes.number.isRequired
     }).isRequired
   })).isRequired,
   leaflet: PropTypes.object.isRequired,
   mapData: PropTypes.shape({
-    isZoomControl: PropTypes.bool,
-    isMarker: PropTypes.bool,
-    iconUrl: PropTypes.string,
-    iconSize: PropTypes.arrayOf(PropTypes.number)
+    isZoomControl: PropTypes.bool.isRequired,
+    isMarker: PropTypes.bool.isRequired,
+    iconUrl: PropTypes.string.isRequired,
+    iconSize: PropTypes.arrayOf(PropTypes.number).isRequired
   }).isRequired,
   activeCity: PropTypes.string.isRequired,
   onCityClick: PropTypes.func.isRequired,
