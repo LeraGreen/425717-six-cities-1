@@ -21,7 +21,7 @@ it(`Click on city title calls callback`, () => {
     city={city}
     isActive={isActive}
     onCityClick={clickHandler}
-    onCardClick = {onCardClick}
+    onCardClick={onCardClick}
   />);
 
 

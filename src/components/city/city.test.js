@@ -10,7 +10,7 @@ const mock = {
   onCardClick: jest.fn()
 };
 
-it(`App renders correctly`, () => {
+it(`App is rendered correctly`, () => {
   const {city, onCityClick, onCardClick, isActive} = mock;
   const tree = renderer
     .create(<City 
@@ -18,7 +18,7 @@ it(`App renders correctly`, () => {
       isActive={isActive}
       onCityClick={onCityClick}
       onCardClick={onCardClick}
-      />)
+    />)
     .toJSON();
 
   expect(tree).toMatchSnapshot();

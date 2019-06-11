@@ -10,21 +10,24 @@ it (`Should return initial state by default`, () => {
 
 it (`Should update activeCity by a given action`, () => {
   const state = reducer({
+    activeCard: -1,
     activeCity: `Paris`
   }, 
   {
     type: `CHANGE_ACTIVE_CITY`,
-    payload: `Krizopol`
+    payload: `Dusseldorf`
   });
 
   expect(state).toEqual({
-    activeCity: `Krizopol`
+    activeCard: -1,
+    activeCity: `Dusseldorf`
   });
 });
 
 it (`Should update activeCard by a given action`, () => {
   const state = reducer({
-    activeCard: 10
+    activeCard: 10,
+    activeCity: `Dusseldorf`
   }, 
   {
     type: `CHANGE_ACTIVE_CARD`,
@@ -32,16 +35,17 @@ it (`Should update activeCard by a given action`, () => {
   });
 
   expect(state).toEqual({
-    activeCard: 12
+    activeCard: 12,
+    activeCity: `Dusseldorf`
   });
 });
 
 it (`Should return action with city in payload`, () => {
-  const action = changeCity(`Urupinsk`);
+  const action = changeCity(`Dusseldorf`);
 
   expect(action).toEqual({
     type: `CHANGE_ACTIVE_CITY`,
-    payload: `Urupinsk`
+    payload: `Dusseldorf`
   })
 });
 

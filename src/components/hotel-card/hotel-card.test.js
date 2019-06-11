@@ -19,7 +19,7 @@ const mock = {
 it(`Hotel renders correctly`, () => {
   const {hotel, onCardClick} = mock;
   const tree = renderer
-    .create(<HotelCard key={0} hotel={hotel} onCardClick={onCardClick}/>)
+    .create(<HotelCard key={0} hotel={hotel} onCardClick={onCardClick} />)
     .toJSON();
 
   expect(tree).toMatchSnapshot();

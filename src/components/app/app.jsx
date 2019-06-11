@@ -47,12 +47,11 @@ App.propTypes = {
   onCardClick: PropTypes.func.isRequired
 };
 
-const mapStateToProps = (state, ownProps) => {
-  return Object.assign({}, ownProps, {
+const mapStateToProps = (state, ownProps) =>
+  Object.assign({}, ownProps, {
     activeCity: state.activeCity,
     activeCard: state.activeCard
   });
-};
 
 const mapDispatchToProps = (dispatch) => {
   return {
