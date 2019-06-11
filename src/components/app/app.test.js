@@ -1,7 +1,7 @@
 import React from "react";
 import renderer from "react-test-renderer";
 
-import App, {mapDispatchToProps, mapStateToProps} from "./app.jsx";
+import App, {mapStateToProps, mapDispatchToProps} from "./app.jsx";
 
 const mock = {
   hotels: [
