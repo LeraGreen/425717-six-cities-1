@@ -7,7 +7,7 @@ import City from "./city.jsx";
 configure({adapter: new Adapter()});
 
 const mock = {
-  city: `Chelyaba`,
+  city: `Paris`,
   isActive: false,
   onCityChange: jest.fn(),
   onCardActivate: jest.fn()

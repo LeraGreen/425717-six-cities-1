@@ -16,7 +16,7 @@ const City = (props) => {
 };
 
 City.propTypes = {
-  city: PropTypes.string.isRequired,
+  city: PropTypes.oneOf([`Dusseldorf`, `Hamburg`, `Amsterdam`, `Brussels`, `Cologne`, `Paris`]).isRequired,
   onCityChange: PropTypes.func.isRequired,
   onCardActivate: PropTypes.func.isRequired,
   isActive: PropTypes.bool.isRequired

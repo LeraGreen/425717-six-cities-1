@@ -81,7 +81,7 @@ Map.propTypes = {
     iconSize: PropTypes.arrayOf(PropTypes.number).isRequired
   }).isRequired,
   city: PropTypes.shape({
-    city: PropTypes.string.isRequired,
+    city: PropTypes.oneOf([`Dusseldorf`, `Hamburg`, `Amsterdam`, `Brussels`, `Cologne`, `Paris`]).isRequired,
     location: PropTypes.shape({
       coordinates: PropTypes.arrayOf(PropTypes.number).isRequired,
       zoom: PropTypes.number.isRequired

@@ -139,7 +139,7 @@ HotelsPage.propTypes = {
     coordinates: PropTypes.arrayOf(PropTypes.number).isRequired
   })).isRequired,
   cities: PropTypes.arrayOf(PropTypes.shape({
-    city: PropTypes.string.isRequired,
+    city: PropTypes.oneOf([`Dusseldorf`, `Hamburg`, `Amsterdam`, `Brussels`, `Cologne`, `Paris`]).isRequired,
     location: PropTypes.shape({
       coordinates: PropTypes.arrayOf(PropTypes.number).isRequired,
       zoom: PropTypes.number.isRequired
@@ -152,7 +152,7 @@ HotelsPage.propTypes = {
     iconUrl: PropTypes.string.isRequired,
     iconSize: PropTypes.arrayOf(PropTypes.number).isRequired
   }).isRequired,
-  activeCity: PropTypes.string.isRequired,
+  activeCity: PropTypes.oneOf([`Dusseldorf`, `Hamburg`, `Amsterdam`, `Brussels`, `Cologne`, `Paris`]).isRequired,
   onCityChange: PropTypes.func.isRequired,
   onCardActivate: PropTypes.func.isRequired
 };

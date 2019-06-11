@@ -24,7 +24,7 @@ it (`Should update activeCity by a given action`, () => {
   });
 });
 
-it (`Should update activeCard by a given action`, () => {
+it (`Should update activeCity to the value given in an action`, () => {
   const state = reducer({
     activeCard: 10,
     activeCity: `Dusseldorf`
