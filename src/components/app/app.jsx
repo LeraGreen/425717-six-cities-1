@@ -55,11 +55,12 @@ const mapStateToProps = (state, ownProps) =>
 
 const mapDispatchToProps = (dispatch) =>
   ({
-    onCityChange: (name) => {
-      dispatch(changeCity(name));
-    },
     onCardActivate: (index) => {
       dispatch(changeCard(index));
+    },
+    onCityChange: (name) => {
+      dispatch(changeCity(name));
+      dispatch(changeCard(-1));
     }
   });
 

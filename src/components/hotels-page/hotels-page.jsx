@@ -45,7 +45,6 @@ class HotelsPage extends PureComponent {
         key={i}
         city={item.city}
         onCityChange={this._onCityChange}
-        onCardActivate={this._onCardActivate}
         isActive={activeCity === item.city}
       />
     );
