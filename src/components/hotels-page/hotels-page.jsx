@@ -9,16 +9,16 @@ class HotelsPage extends PureComponent {
   constructor(props) {
     super(props);
 
-    this._onCardClick = this._onCardClick.bind(this);
-    this._onCityClick = this._onCityClick.bind(this);
+    this._onCardActivate = this._onCardActivate.bind(this);
+    this._onCityChange = this._onCityChange.bind(this);
   }
 
-  _onCardClick(index) {
-    this.props.onCardClick(index);
+  _onCardActivate(index) {
+    this.props.onCardActivate(index);
   }
 
-  _onCityClick(name) {
-    this.props.onCityClick(name);
+  _onCityChange(name) {
+    this.props.onCityChange(name);
   }
 
   render() {
@@ -37,15 +37,15 @@ class HotelsPage extends PureComponent {
         key={i}
         hotel={item}
         index={i}
-        onCardClick={this._onCardClick}
+        onCardActivate={this._onCardActivate}
       />
     );
     const citiesList = cities.map((item, i) =>
       <City
         key={i}
         city={item.city}
-        onCityClick={this._onCityClick}
-        onCardClick={this._onCardClick}
+        onCityChange={this._onCityChange}
+        onCardActivate={this._onCardActivate}
         isActive={activeCity === item.city}
       />
     );
@@ -153,8 +153,8 @@ HotelsPage.propTypes = {
     iconSize: PropTypes.arrayOf(PropTypes.number).isRequired
   }).isRequired,
   activeCity: PropTypes.string.isRequired,
-  onCityClick: PropTypes.func.isRequired,
-  onCardClick: PropTypes.func.isRequired
+  onCityChange: PropTypes.func.isRequired,
+  onCardActivate: PropTypes.func.isRequired
 };
 
 export default HotelsPage;

@@ -6,7 +6,7 @@ import {changeCity, changeCard} from "../../reducer.js";
 import HotelsPage from "../hotels-page/hotels-page.jsx";
 
 const App = (props) => {
-  const {hotels, cities, leaflet, mapData, activeCity, onCityClick, onCardClick} = props;
+  const {hotels, cities, leaflet, mapData, activeCity, onCityChange, onCardActivate} = props;
 
   return <HotelsPage
     hotels={hotels}
@@ -14,8 +14,8 @@ const App = (props) => {
     leaflet={leaflet}
     mapData={mapData}
     activeCity={activeCity}
-    onCityClick={onCityClick}
-    onCardClick={onCardClick}
+    onCityChange={onCityChange}
+    onCardActivate={onCardActivate}
   />;
 };
 
@@ -43,8 +43,8 @@ App.propTypes = {
     iconSize: PropTypes.arrayOf(PropTypes.number).isRequired
   }).isRequired,
   activeCity: PropTypes.string.isRequired,
-  onCityClick: PropTypes.func.isRequired,
-  onCardClick: PropTypes.func.isRequired
+  onCityChange: PropTypes.func.isRequired,
+  onCardActivate: PropTypes.func.isRequired
 };
 
 const mapStateToProps = (state, ownProps) =>
@@ -55,10 +55,10 @@ const mapStateToProps = (state, ownProps) =>
 
 const mapDispatchToProps = (dispatch) =>
   ({
-    onCityClick: (name) => {
+    onCityChange: (name) => {
       dispatch(changeCity(name));
     },
-    onCardClick: (index) => {
+    onCardActivate: (index) => {
       dispatch(changeCard(index));
     }
   });

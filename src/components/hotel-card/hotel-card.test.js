@@ -13,13 +13,13 @@ const mock = {
     photo: `img/apartment-01.jpg`,
     coordinates: [52.369553943508, 4.85309666406198]
   },
-  onCardClick: jest.fn()
+  onCardActivate: jest.fn()
 };
 
 it(`Hotel renders correctly`, () => {
-  const {hotel, onCardClick} = mock;
+  const {hotel, onCardActivate} = mock;
   const tree = renderer
-    .create(<HotelCard key={0} hotel={hotel} onCardClick={onCardClick} />)
+    .create(<HotelCard key={0} hotel={hotel} index={0} onCardActivate={onCardActivate} />)
     .toJSON();
 
   expect(tree).toMatchSnapshot();

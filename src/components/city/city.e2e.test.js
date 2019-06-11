@@ -9,19 +9,19 @@ configure({adapter: new Adapter()});
 const mock = {
   city: `Chelyaba`,
   isActive: false,
-  onCityClick: jest.fn(),
-  onCardClick: jest.fn()
+  onCityChange: jest.fn(),
+  onCardActivate: jest.fn()
 };
 
 it(`Click on city title calls callback`, () => {
-  const {city, onCityClick, onCardClick, isActive} = mock;
+  const {city, onCityChange, onCardActivate, isActive} = mock;
   const clickHandler = jest.fn();
 
   const cityTab = mount(<City
     city={city}
     isActive={isActive}
-    onCityClick={clickHandler}
-    onCardClick={onCardClick}
+    onCityChange={clickHandler}
+    onCardActivate={onCardActivate}
   />);
 
 

@@ -26,7 +26,7 @@ it(`Click on card's title calls callback`, () => {
     hotel={hotel}
     index={0}
     key={0}
-    onCardClick={clickHandler}
+    onCardActivate={clickHandler}
   />);
 
 

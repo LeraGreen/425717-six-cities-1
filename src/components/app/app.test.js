@@ -104,12 +104,12 @@ const mock = {
     }
   ],
   activeCity: `Dusseldorf`,
-  onCityClick: jest.fn(),
-  onCardClick: jest.fn()
+  onCityChange: jest.fn(),
+  onCardActivate: jest.fn()
 };
 
 it(`App renders correctly`, () => {
-  const {hotels, cities, leaflet, mapData, activeCity, onCityClick, onCardClick} = mock;
+  const {hotels, cities, leaflet, mapData, activeCity, onCityChange, onCardActivate} = mock;
   const tree = renderer
     .create(<App 
       hotels={hotels}
@@ -117,8 +117,8 @@ it(`App renders correctly`, () => {
       leaflet={leaflet}
       mapData={mapData}
       activeCity={activeCity}
-      onCityClick={onCityClick}
-      onCardClick={onCardClick}
+      onCityChange={onCityChange}
+      onCardActivate={onCardActivate}
       />)
     .toJSON();
 
