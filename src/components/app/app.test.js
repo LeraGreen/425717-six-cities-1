@@ -127,12 +127,12 @@ it(`App renders correctly`, () => {
 
 it(`mapStateToProps updates state correctly`, () => {
   const updatedState = mapStateToProps({
-      activeCard: -1,
-      activeCity: `Paris`
-    },
-    {
       activeCard: 12,
       activeCity: `Cologne`
+    },
+    {
+      activeCard: -1,
+      activeCity: `Paris`
     });
 
   expect(updatedState).toEqual({

@@ -54,14 +54,14 @@ const mapStateToProps = (state, ownProps) =>
   });
 
 const mapDispatchToProps = (dispatch) => ({
-    onCardActivate: (index) => {
-      dispatch(changeCard(index));
-    },
-    onCityChange: (name) => {
-      dispatch(changeCity(name));
-      dispatch(changeCard(-1));
-    }
-  });
+  onCardActivate: (index) => {
+    dispatch(changeCard(index));
+  },
+  onCityChange: (name) => {
+    dispatch(changeCity(name));
+    dispatch(changeCard(-1));
+  }
+});
 
 const ConnectedApp = connect(mapStateToProps, mapDispatchToProps)(App);
 
