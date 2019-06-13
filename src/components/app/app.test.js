@@ -140,3 +140,15 @@ it(`mapStateToProps updates state correctly`, () => {
     activeCity: `Cologne`
   })
 });
+
+it(`mapStateToProps updates state correctly without ownProps`, () => {
+  const updatedState = mapStateToProps({
+      activeCard: 12,
+      activeCity: `Cologne`
+    });
+
+  expect(updatedState).toEqual({
+    activeCard: 12,
+    activeCity: `Cologne`
+  })
+});
