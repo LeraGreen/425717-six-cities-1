@@ -48,9 +48,9 @@ App.propTypes = {
 };
 
 const mapStateToProps = (state, ownProps) =>
-  Object.assign({}, ownProps, {
-    activeCity: state.activeCity,
-    activeCard: state.activeCard
+  Object.assign({}, state, {
+    activeCity: ownProps.activeCity,
+    activeCard: ownProps.activeCard
   });
 
 const mapDispatchToProps = (dispatch) =>
