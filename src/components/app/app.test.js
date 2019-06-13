@@ -15,7 +15,7 @@ const mock = {
       coordinates: [52.3909553943508, 4.929309666406198]
     },
     {
-      city: `Amster`,
+      city: `Amsterdam`,
       description: `Wood and stone place`,
       price: 200,
       type: `Private Room`,
