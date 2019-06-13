@@ -48,13 +48,12 @@ App.propTypes = {
 };
 
 const mapStateToProps = (state, ownProps) =>
-  Object.assign({}, state, {
-    activeCity: ownProps.activeCity,
-    activeCard: ownProps.activeCard
+  Object.assign({}, ownProps, {
+    activeCity: state.activeCity,
+    activeCard: state.activeCard
   });
 
-const mapDispatchToProps = (dispatch) =>
-  ({
+const mapDispatchToProps = (dispatch) => ({
     onCardActivate: (index) => {
       dispatch(changeCard(index));
     },
@@ -68,4 +67,3 @@ const ConnectedApp = connect(mapStateToProps, mapDispatchToProps)(App);
 
 export default App;
 export {ConnectedApp, mapStateToProps, mapDispatchToProps};
-

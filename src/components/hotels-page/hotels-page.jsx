@@ -8,21 +8,10 @@ import HotelCard from "../hotel-card/hotel-card.jsx";
 class HotelsPage extends PureComponent {
   constructor(props) {
     super(props);
-
-    this._onCardActivate = this._onCardActivate.bind(this);
-    this._onCityChange = this._onCityChange.bind(this);
-  }
-
-  _onCardActivate(index) {
-    this.props.onCardActivate(index);
-  }
-
-  _onCityChange(name) {
-    this.props.onCityChange(name);
   }
 
   render() {
-    const {hotels, cities, leaflet, mapData, activeCity} = this.props;
+    const {hotels, cities, leaflet, mapData, activeCity, onCardActivate, onCityChange} = this.props;
     const activeCityHotels = hotels.filter((item) => item.city === activeCity);
     const activeCityData = cities.find((item) => item.city === activeCity);
 
@@ -37,14 +26,14 @@ class HotelsPage extends PureComponent {
         key={i}
         hotel={item}
         index={i}
-        onCardActivate={this._onCardActivate}
+        onCardActivate={onCardActivate}
       />
     );
     const citiesList = cities.map((item, i) =>
       <City
         key={i}
         city={item.city}
-        onCityChange={this._onCityChange}
+        onCityChange={onCityChange}
         isActive={activeCity === item.city}
       />
     );

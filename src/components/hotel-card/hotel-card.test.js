@@ -5,7 +5,7 @@ import HotelCard from "./hotel-card.jsx";
 
 const mock = {
   hotel: {
-    city: `Krizopol`,
+    city: `Paris`,
     description: `Какая-то хибара`,
     price: 120,
     type: `Apartment`,

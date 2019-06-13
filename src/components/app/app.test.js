@@ -126,8 +126,7 @@ it(`App renders correctly`, () => {
 });
 
 it(`mapStateToProps updates state correctly`, () => {
-  const updatedState = mapStateToProps(
-    {
+  const updatedState = mapStateToProps({
       activeCard: -1,
       activeCity: `Paris`
     },
