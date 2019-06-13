@@ -20,16 +20,14 @@ const reducer = (state = initialState, action) => {
   }
 }
 
-const changeCity = (name) =>
-  ({
-    type: `CHANGE_ACTIVE_CITY`,
-    payload: name
-  })
+const changeCity = (name) => ({
+  type: `CHANGE_ACTIVE_CITY`,
+  payload: name
+})
 
-const changeCard = (index) => 
-  ({
-    type: `CHANGE_ACTIVE_CARD`,
-    payload: index
-  })
+const changeCard = (index) => ({
+  type: `CHANGE_ACTIVE_CARD`,
+  payload: index
+})
 
 export {reducer, changeCity, changeCard};
