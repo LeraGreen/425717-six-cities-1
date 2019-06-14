@@ -8,6 +8,7 @@ configure({adapter: new Adapter()});
 
 const mock = {
   hotel: {
+    city: `Paris`,
     description: `Some cool place`,
     price: 120,
     type: `Apartment`,
@@ -25,58 +26,11 @@ it(`Click on card's title calls callback`, () => {
     hotel={hotel}
     index={0}
     key={0}
-    onClick = {clickHandler}
+    onCardActivate={clickHandler}
   />);
 
 
   const title = card.find(`.place-card__name`);
   title.simulate(`click`);
   expect(clickHandler).toHaveBeenCalledTimes(1);
-});
-
-it(`Callback doesn't call if index didn't pass`, () => {
-  const {hotel} = mock;
-  const clickHandler = jest.fn();
-
-  const card = mount(<HotelCard
-    hotel={hotel}
-    key={0}
-    onClick = {clickHandler}
-  />);
-
-
-  const title = card.find(`.place-card__name`);
-  title.simulate(`click`);
-  expect(clickHandler).toHaveBeenCalledTimes(0);
-});
-
-it(`Callback doesn't call if handler didn't pass`, () => {
-  const {hotel} = mock;
-  const clickHandler = jest.fn();
-
-  const card = mount(<HotelCard
-    hotel={hotel}
-    key={0}
-    index={0}
-  />);
-
-
-  const title = card.find(`.place-card__name`);
-  title.simulate(`click`);
-  expect(clickHandler).toHaveBeenCalledTimes(0);
-});
-
-it(`Callback doesn't call if handler and index didn't pass`, () => {
-  const {hotel} = mock;
-  const clickHandler = jest.fn();
-
-  const card = mount(<HotelCard
-    hotel={hotel}
-    key={0}
-  />);
-
-
-  const title = card.find(`.place-card__name`);
-  title.simulate(`click`);
-  expect(clickHandler).toHaveBeenCalledTimes(0);
 });

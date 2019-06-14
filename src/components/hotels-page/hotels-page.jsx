@@ -1,44 +1,42 @@
 import React, {PureComponent} from "react";
 import PropTypes from "prop-types";
 
+import City from "../city/city.jsx";
 import Map from "../map/map.jsx";
 import HotelCard from "../hotel-card/hotel-card.jsx";
 
 class HotelsPage extends PureComponent {
   constructor(props) {
     super(props);
-
-    this.state = {
-      activeCard: -1
-    };
-
-    this._onClick = this._onClick.bind(this);
-  }
-
-  _onClick(index) {
-    this.setState({
-      activeCard: index
-    });
   }
 
   render() {
-    const {hotels, leaflet, mapData} = this.props;
+    const {hotels, cities, leaflet, mapData, activeCity, onCardActivate, onCityChange, city} = this.props;
 
     const map = <Map
       hotels={hotels}
+      city={city}
       leaflet={leaflet}
       mapData={mapData}
     />;
-    const listItems = hotels.map((item, i) => (
+    const listItems = hotels.map((item, i) =>
       <HotelCard
         key={i}
         hotel={item}
         index={i}
-        onClick={this._onClick}
+        onCardActivate={onCardActivate}
       />
-    ));
+    );
+    const citiesList = cities.map((item, i) =>
+      <City
+        key={i}
+        city={item.city}
+        onCityChange={onCityChange}
+        isActive={activeCity === item.city}
+      />
+    );
 
-    return <React.Fragment>
+    return <>
       <div style={{display: `none`}}>
         <svg xmlns="http://www.w3.org/2000/svg"><symbol id="icon-arrow-select" viewBox="0 0 7 4"><path fillRule="evenodd" clipRule="evenodd" d="M0 0l3.5 2.813L7 0v1.084L3.5 4 0 1.084V0z"></path></symbol><symbol id="icon-bookmark" viewBox="0 0 17 18"><path d="M3.993 2.185l.017-.092V2c0-.554.449-1 .99-1h10c.522 0 .957.41.997.923l-2.736 14.59-4.814-2.407-.39-.195-.408.153L1.31 16.44 3.993 2.185z"></path></symbol><symbol id="icon-star" viewBox="0 0 13 12"><path fillRule="evenodd" clipRule="evenodd" d="M6.5 9.644L10.517 12 9.451 7.56 13 4.573l-4.674-.386L6.5 0 4.673 4.187 0 4.573 3.549 7.56 2.483 12 6.5 9.644z"></path></symbol></svg>
       </div>
@@ -71,36 +69,7 @@ class HotelsPage extends PureComponent {
         <div className="cities tabs">
           <section className="locations container">
             <ul className="locations__list tabs__list">
-              <li className="locations__item">
-                <a className="locations__item-link tabs__item" href="#">
-                  <span>Paris</span>
-                </a>
-              </li>
-              <li className="locations__item">
-                <a className="locations__item-link tabs__item" href="#">
-                  <span>Cologne</span>
-                </a>
-              </li>
-              <li className="locations__item">
-                <a className="locations__item-link tabs__item" href="#">
-                  <span>Brussels</span>
-                </a>
-              </li>
-              <li className="locations__item">
-                <a className="locations__item-link tabs__item tabs__item--active">
-                  <span>Amsterdam</span>
-                </a>
-              </li>
-              <li className="locations__item">
-                <a className="locations__item-link tabs__item" href="#">
-                  <span>Hamburg</span>
-                </a>
-              </li>
-              <li className="locations__item">
-                <a className="locations__item-link tabs__item" href="#">
-                  <span>Dusseldorf</span>
-                </a>
-              </li>
+              {citiesList}
             </ul>
           </section>
         </div>
@@ -108,7 +77,7 @@ class HotelsPage extends PureComponent {
           <div className="cities__places-container container">
             <section className="cities__places places">
               <h2 className="visually-hidden">Places</h2>
-              <b className="places__found">312 places to stay in Amsterdam</b>
+              <b className="places__found">312 places to stay in {activeCity}</b>
               <form className="places__sorting" action="#" method="get">
                 <span className="places__sorting-caption">Sort by</span>
                 <span className="places__sorting-type" tabIndex="0">
@@ -142,7 +111,7 @@ class HotelsPage extends PureComponent {
           </div>
         </div>
       </main>
-    </React.Fragment>;
+    </>;
   }
 }
 
@@ -155,14 +124,29 @@ HotelsPage.propTypes = {
     photo: PropTypes.string.isRequired,
     coordinates: PropTypes.arrayOf(PropTypes.number).isRequired
   })).isRequired,
+  cities: PropTypes.arrayOf(PropTypes.shape({
+    city: PropTypes.oneOf([`Dusseldorf`, `Hamburg`, `Amsterdam`, `Brussels`, `Cologne`, `Paris`]).isRequired,
+    location: PropTypes.shape({
+      coordinates: PropTypes.arrayOf(PropTypes.number).isRequired,
+      zoom: PropTypes.number.isRequired
+    }).isRequired
+  })).isRequired,
   leaflet: PropTypes.object.isRequired,
   mapData: PropTypes.shape({
-    city: PropTypes.arrayOf(PropTypes.number).isRequired,
-    zoom: PropTypes.number.isRequired,
     isZoomControl: PropTypes.bool.isRequired,
     isMarker: PropTypes.bool.isRequired,
     iconUrl: PropTypes.string.isRequired,
     iconSize: PropTypes.arrayOf(PropTypes.number).isRequired
+  }).isRequired,
+  activeCity: PropTypes.oneOf([`Dusseldorf`, `Hamburg`, `Amsterdam`, `Brussels`, `Cologne`, `Paris`]).isRequired,
+  onCityChange: PropTypes.func.isRequired,
+  onCardActivate: PropTypes.func.isRequired,
+  city: PropTypes.shape({
+    city: PropTypes.oneOf([`Dusseldorf`, `Hamburg`, `Amsterdam`, `Brussels`, `Cologne`, `Paris`]).isRequired,
+    location: PropTypes.shape({
+      coordinates: PropTypes.arrayOf(PropTypes.number).isRequired,
+      zoom: PropTypes.number.isRequired
+    }).isRequired
   }).isRequired
 };
 

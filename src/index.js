@@ -1,23 +1,29 @@
+import {createStore} from 'redux';
 import leaflet from "leaflet";
 import React from "react";
 import ReactDOM from "react-dom";
+import {Provider} from "react-redux";
 
-import App from "./components/app/app.jsx";
-import hotels from "./mocks/hotels.js";
+import {ConnectedApp} from "./components/app/app.jsx";
+import {hotels, cities} from "./mocks/hotels.js";
 import mapData from "./mocks/map-data.js";
+import {reducer} from "./reducer.js";
 
 
 const init = () => {
+  const store = createStore(reducer);
 
   ReactDOM.render(
-      <App 
-        hotels={hotels}
-        leaflet={leaflet}
-        mapData={mapData}
-      />,
+      <Provider store={store}>
+        <ConnectedApp 
+          hotels={hotels}
+          cities={cities}
+          leaflet={leaflet}
+          mapData={mapData}
+        />
+      </Provider>,
       document.getElementById(`root`)
   );
 };
 
 init();
-

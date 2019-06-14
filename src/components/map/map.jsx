@@ -6,6 +6,7 @@ class Map extends PureComponent {
     super(props);
     this.map = null;
     this.leaflet = null;
+    this._pinLayers = [];
   }
 
   render() {
@@ -15,16 +16,16 @@ class Map extends PureComponent {
   }
 
   componentDidMount() {
-    const {hotels, mapData} = this.props;
+    const {hotels, mapData, city} = this.props;
     this.leaflet = this.props.leaflet;
 
     this.map = this.leaflet.map(`map`, {
-      center: mapData.city,
-      zoom: mapData.zoom,
+      center: city.location.coordinates,
+      zoom: city.location.zoom,
       zoomControl: mapData.isZoomControl,
       marker: mapData.isMarker
     });
-    this.map.setView(mapData.city, mapData.zoom);
+    this.map.setView(city.location.coordinates, city.location.zoom);
 
     this.leaflet
       .tileLayer(`https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png`, {
@@ -35,17 +36,31 @@ class Map extends PureComponent {
     this._addPins(hotels, mapData.iconUrl, mapData.iconSize);
   }
 
+  componentDidUpdate() {
+    const {hotels, mapData, city} = this.props;
+
+    this.map.setView(city.location.coordinates, city.location.zoom);
+    this._clearPins();
+    this._addPins(hotels, mapData.iconUrl, mapData.iconSize);
+  }
+
   _addPins(hotels, pinUrl, pinSize) {
     const icon = this.leaflet.icon({
       iconUrl: pinUrl,
       iconSize: pinSize
     });
 
-    for (let hotel of hotels) {
-      this.leaflet
+    this._pinLayers = hotels.map((hotel) => {
+      return this.leaflet
         .marker(hotel[`coordinates`], {icon})
         .addTo(this.map);
-    }
+    });
+  }
+
+  _clearPins() {
+    this._pinLayers.forEach((item) => {
+      this.map.removeLayer(item);
+    });
   }
 }
 
@@ -60,12 +75,17 @@ Map.propTypes = {
   })).isRequired,
   leaflet: PropTypes.object.isRequired,
   mapData: PropTypes.shape({
-    city: PropTypes.arrayOf(PropTypes.number).isRequired,
-    zoom: PropTypes.number.isRequired,
     isZoomControl: PropTypes.bool.isRequired,
     isMarker: PropTypes.bool.isRequired,
     iconUrl: PropTypes.string.isRequired,
     iconSize: PropTypes.arrayOf(PropTypes.number).isRequired
+  }).isRequired,
+  city: PropTypes.shape({
+    city: PropTypes.oneOf([`Dusseldorf`, `Hamburg`, `Amsterdam`, `Brussels`, `Cologne`, `Paris`]).isRequired,
+    location: PropTypes.shape({
+      coordinates: PropTypes.arrayOf(PropTypes.number).isRequired,
+      zoom: PropTypes.number.isRequired
+    }).isRequired
   }).isRequired
 };
 

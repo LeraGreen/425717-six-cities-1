@@ -1,20 +1,28 @@
+import {connect} from "react-redux";
 import React from "react";
 import PropTypes from "prop-types";
 
+import {changeCity, changeCard} from "../../reducer.js";
 import HotelsPage from "../hotels-page/hotels-page.jsx";
 
 const App = (props) => {
-  const {hotels, leaflet, mapData} = props;
+  const {hotels, cities, leaflet, mapData, activeCity, onCityChange, onCardActivate, activeCityData} = props;
 
   return <HotelsPage
     hotels={hotels}
+    cities={cities}
     leaflet={leaflet}
     mapData={mapData}
+    activeCity={activeCity}
+    onCityChange={onCityChange}
+    onCardActivate={onCardActivate}
+    city={activeCityData}
   />;
 };
 
 App.propTypes = {
   hotels: PropTypes.arrayOf(PropTypes.shape({
+    city: PropTypes.oneOf([`Dusseldorf`, `Hamburg`, `Amsterdam`, `Brussels`, `Cologne`, `Paris`]).isRequired,
     description: PropTypes.string.isRequired,
     price: PropTypes.number.isRequired,
     type: PropTypes.string.isRequired,
@@ -22,15 +30,51 @@ App.propTypes = {
     photo: PropTypes.string.isRequired,
     coordinates: PropTypes.arrayOf(PropTypes.number)
   })).isRequired,
+  cities: PropTypes.arrayOf(PropTypes.shape({
+    city: PropTypes.oneOf([`Dusseldorf`, `Hamburg`, `Amsterdam`, `Brussels`, `Cologne`, `Paris`]).isRequired,
+    location: PropTypes.shape({
+      coordinates: PropTypes.arrayOf(PropTypes.number).isRequired,
+      zoom: PropTypes.number.isRequired
+    }).isRequired
+  })).isRequired,
   leaflet: PropTypes.object.isRequired,
   mapData: PropTypes.shape({
-    city: PropTypes.arrayOf(PropTypes.number),
-    zoom: PropTypes.number,
-    isZoomControl: PropTypes.bool,
-    isMarker: PropTypes.bool,
-    iconUrl: PropTypes.string,
-    iconSize: PropTypes.arrayOf(PropTypes.number)
+    isZoomControl: PropTypes.bool.isRequired,
+    isMarker: PropTypes.bool.isRequired,
+    iconUrl: PropTypes.string.isRequired,
+    iconSize: PropTypes.arrayOf(PropTypes.number).isRequired
+  }).isRequired,
+  activeCity: PropTypes.oneOf([`Dusseldorf`, `Hamburg`, `Amsterdam`, `Brussels`, `Cologne`, `Paris`]).isRequired,
+  onCityChange: PropTypes.func.isRequired,
+  onCardActivate: PropTypes.func.isRequired,
+  activeCityData: PropTypes.shape({
+    city: PropTypes.oneOf([`Dusseldorf`, `Hamburg`, `Amsterdam`, `Brussels`, `Cologne`, `Paris`]).isRequired,
+    location: PropTypes.shape({
+      coordinates: PropTypes.arrayOf(PropTypes.number).isRequired,
+      zoom: PropTypes.number.isRequired
+    }).isRequired
   }).isRequired
 };
 
+const mapStateToProps = (state, ownProps) =>
+  Object.assign({}, ownProps, {
+    activeCity: state.activeCity,
+    activeCard: state.activeCard,
+    hotels: ownProps.hotels.filter((item) => item.city === state.activeCity),
+    activeCityData: ownProps.cities.find((item) => item.city === state.activeCity)
+  });
+
+const mapDispatchToProps = (dispatch) => ({
+  onCardActivate: (index) => {
+    dispatch(changeCard(index));
+  },
+  onCityChange: (name) => {
+    dispatch(changeCity(name));
+    dispatch(changeCard(-1));
+  }
+});
+
+const ConnectedApp = connect(mapStateToProps, mapDispatchToProps)(App);
+
 export default App;
+export {ConnectedApp, mapStateToProps, mapDispatchToProps};
