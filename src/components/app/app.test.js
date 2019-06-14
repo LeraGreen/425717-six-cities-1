@@ -1,7 +1,7 @@
 import React from "react";
 import renderer from "react-test-renderer";
 
-import App, {mapStateToProps} from "./app.jsx";
+import App, {mapStateToProps, mapDispatchToProps} from "./app.jsx";
 
 const mock = {
   hotels: [
@@ -228,3 +228,22 @@ it(`mapStateToProps updates state correctly`, () => {
     }
   })
 });
+
+describe(`mapDispatchToProps works correctly`, () => {
+  it(`Call of onCardActivate returns right action`, () => {
+    const dispatch = jest.fn();
+    const index = 1;
+  
+    mapDispatchToProps(dispatch).onCardActivate(index);
+    expect(dispatch.mock.calls[0][0]).toEqual({"payload": 1, "type": "CHANGE_ACTIVE_CARD"});
+  });
+
+  it(`Call of onCityChange returns right action`, () => {
+    const dispatch = jest.fn();
+    const city = `Paris`;
+  
+    mapDispatchToProps(dispatch).onCityChange(city);
+    expect(dispatch.mock.calls[0][0]).toEqual({"payload": "Paris", "type": "CHANGE_ACTIVE_CITY"});
+    expect(dispatch.mock.calls[1][0]).toEqual({"payload": -1,"type": "CHANGE_ACTIVE_CARD"});
+  });
+})
