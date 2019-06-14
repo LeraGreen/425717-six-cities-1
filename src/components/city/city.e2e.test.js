@@ -26,6 +26,6 @@ it(`Click on city title calls callback`, () => {
 
 
   const tab = cityTab.find(`.locations__item-link`);
-  tab.simulate(`click`);
+  tab.simulate(`click`, {preventDefault:jest.fn()});
   expect(clickHandler).toHaveBeenCalledTimes(1);
 });

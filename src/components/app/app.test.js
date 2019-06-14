@@ -1,13 +1,13 @@
 import React from "react";
 import renderer from "react-test-renderer";
 
-import App, {mapStateToProps, mapDispatchToProps} from "./app.jsx";
+import App, {mapStateToProps} from "./app.jsx";
 
 const mock = {
   hotels: [
     { 
       city: `Paris`,
-      description: `Beautiful & luxurious apartment at great location`,
+      description: `Beautiful & luxurious apartment at great location in Paris`,
       price: 120,
       type: `Apartment`,
       rating: 20,
@@ -16,7 +16,7 @@ const mock = {
     },
     {
       city: `Amsterdam`,
-      description: `Wood and stone place`,
+      description: `Wood and stone place in Amsterdam`,
       price: 200,
       type: `Private Room`,
       rating: 10,
@@ -24,8 +24,8 @@ const mock = {
       coordinates: [52.3909553943508, 4.929309666406198]
     },
     {
-      city: `Vienna`,
-      description: `Canal View Prinsengracht`,
+      city: `Dusseldorf`,
+      description: `Canal View Prinsengracht in Dusseldorf`,
       price: 80,
       type: `Private Room`,
       rating: 0,
@@ -105,20 +105,48 @@ const mock = {
   ],
   activeCity: `Dusseldorf`,
   onCityChange: jest.fn(),
-  onCardActivate: jest.fn()
+  onCardActivate: jest.fn(),
+  activeCityData: {
+    city: `Dusseldorf`,
+    location: {
+      coordinates: [51.22172, 6.77616],
+      zoom: 10
+    }
+  }
 };
 
 it(`App renders correctly`, () => {
-  const {hotels, cities, leaflet, mapData, activeCity, onCityChange, onCardActivate} = mock;
+  const activeHotels = [
+    {
+      city: `Dusseldorf`,
+      description: `Canal View Prinsengracht in Dusseldorf`,
+      price: 80,
+      type: `Private Room`,
+      rating: 0,
+      photo: `img/apartment-03.jpg`,
+      coordinates: [52.3909553943508, 4.929309666406198]
+    },
+    {
+      city: `Dusseldorf`,
+      description: `Hostel in Dusseldorf`,
+      price: 80,
+      type: `Hostel`,
+      rating: 0,
+      photo: `img/apartment-20.jpg`,
+      coordinates: [52.334664564943508, 4.929309666406198]
+    }
+  ];
+  const {cities, leaflet, mapData, activeCity, onCityChange, onCardActivate, activeCityData} = mock;
   const tree = renderer
     .create(<App 
-      hotels={hotels}
+      hotels={activeHotels}
       cities={cities}
       leaflet={leaflet}
       mapData={mapData}
       activeCity={activeCity}
       onCityChange={onCityChange}
       onCardActivate={onCardActivate}
+      activeCityData={activeCityData}
       />)
     .toJSON();
 
@@ -131,24 +159,72 @@ it(`mapStateToProps updates state correctly`, () => {
       activeCity: `Cologne`
     },
     {
-      activeCard: -1,
-      activeCity: `Paris`
+      hotels: mock.hotels,
+      cities: mock.cities,
+      mapData: mock.mapData,
+      cities: mock.cities
     });
 
   expect(updatedState).toEqual({
     activeCard: 12,
-    activeCity: `Cologne`
-  })
-});
-
-it(`mapStateToProps updates state correctly without ownProps`, () => {
-  const updatedState = mapStateToProps({
-      activeCard: 12,
-      activeCity: `Cologne`
-    });
-
-  expect(updatedState).toEqual({
-    activeCard: 12,
-    activeCity: `Cologne`
+    activeCity: `Cologne`,
+    hotels: [],
+    activeCityData: {
+      city: `Cologne`,
+      location: {
+        coordinates: [50.941357, 6.958307],
+        zoom: 10
+      }
+    },
+    cities: [
+      {
+        city: `Paris`,
+        location: {
+          coordinates: [48.864716, 2.349014],
+          zoom: 10
+        }
+      },
+      {
+        city: `Cologne`,
+        location: {
+          coordinates: [50.941357, 6.958307],
+          zoom: 10
+        }
+      },
+      {
+        city: `Brussels`,
+        location: {
+          coordinates: [50.85045, 4.34878],
+          zoom: 10
+        }
+      },
+      {
+        city: `Amsterdam`,
+        location: {
+          coordinates: [52.37403, 4.88969],
+          zoom: 10
+        }
+      },
+      {
+        city: `Hamburg`,
+        location: {
+          coordinates: [53.551086, 9.993682],
+          zoom: 10
+        }
+      },
+      {
+        city: `Dusseldorf`,
+        location: {
+          coordinates: [51.22172, 6.77616],
+          zoom: 10
+        }
+      }
+    ],
+    mapData: {
+      isZoomControl: false,
+      isMarker: true,
+      iconUrl: `img/pin.svg`,
+      iconSize: [20, 20]
+    }
   })
 });

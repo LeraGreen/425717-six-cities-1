@@ -11,17 +11,15 @@ class HotelsPage extends PureComponent {
   }
 
   render() {
-    const {hotels, cities, leaflet, mapData, activeCity, onCardActivate, onCityChange} = this.props;
-    const activeCityHotels = hotels.filter((item) => item.city === activeCity);
-    const activeCityData = cities.find((item) => item.city === activeCity);
+    const {hotels, cities, leaflet, mapData, activeCity, onCardActivate, onCityChange, city} = this.props;
 
     const map = <Map
-      hotels={activeCityHotels}
-      city={activeCityData}
+      hotels={hotels}
+      city={city}
       leaflet={leaflet}
       mapData={mapData}
     />;
-    const listItems = activeCityHotels.map((item, i) =>
+    const listItems = hotels.map((item, i) =>
       <HotelCard
         key={i}
         hotel={item}
@@ -142,7 +140,14 @@ HotelsPage.propTypes = {
   }).isRequired,
   activeCity: PropTypes.oneOf([`Dusseldorf`, `Hamburg`, `Amsterdam`, `Brussels`, `Cologne`, `Paris`]).isRequired,
   onCityChange: PropTypes.func.isRequired,
-  onCardActivate: PropTypes.func.isRequired
+  onCardActivate: PropTypes.func.isRequired,
+  city: PropTypes.shape({
+    city: PropTypes.oneOf([`Dusseldorf`, `Hamburg`, `Amsterdam`, `Brussels`, `Cologne`, `Paris`]).isRequired,
+    location: PropTypes.shape({
+      coordinates: PropTypes.arrayOf(PropTypes.number).isRequired,
+      zoom: PropTypes.number.isRequired
+    }).isRequired
+  }).isRequired
 };
 
 export default HotelsPage;

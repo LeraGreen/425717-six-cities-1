@@ -15,7 +15,7 @@ const mock = {
       coordinates: [52.3909553943508, 4.929309666406198]
     },
     {
-      city: `Amster`,
+      city: `Paris`,
       description: `Wood and stone place`,
       price: 200,
       type: `Private Room`,
@@ -96,11 +96,18 @@ const mock = {
   ],
   activeCity: `Paris`,
   onCityChange: jest.fn(),
-  onCardActivate: jest.fn()
+  onCardActivate: jest.fn(),
+  city: {
+    city: `Paris`,
+    location: {
+      coordinates: [48.864716, 2.349014],
+      zoom: 10
+    }
+  }
 };
 
 it(`Hotels page renders correctly`, () => {
-  const {hotels, cities, leaflet, mapData, activeCity, onCardActivate, onCityChange} = mock;
+  const {hotels, cities, leaflet, mapData, activeCity, onCardActivate, onCityChange, city} = mock;
 
   const tree = renderer
     .create(<HotelsPage 
@@ -111,6 +118,7 @@ it(`Hotels page renders correctly`, () => {
       leaflet={leaflet}
       onCardActivate={onCardActivate}
       onCityChange={onCityChange}
+      city={city}
     />)
     .toJSON();
 
