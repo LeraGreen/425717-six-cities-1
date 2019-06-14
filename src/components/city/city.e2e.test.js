@@ -14,8 +14,9 @@ const mock = {
 };
 
 it(`Click on city title calls callback`, () => {
-  const {city, onCityChange, onCardActivate, isActive} = mock;
+  const {city, onCardActivate, isActive} = mock;
   const clickHandler = jest.fn();
+  const preventDefault = jest.fn();
 
   const cityTab = mount(<City
     city={city}
@@ -26,6 +27,8 @@ it(`Click on city title calls callback`, () => {
 
 
   const tab = cityTab.find(`.locations__item-link`);
-  tab.simulate(`click`, {preventDefault:jest.fn()});
+  tab.simulate(`click`, {preventDefault:preventDefault});
   expect(clickHandler).toHaveBeenCalledTimes(1);
+  expect(clickHandler).toHaveBeenCalledWith(city);
+  expect(preventDefault).toHaveBeenCalledTimes(1);
 });
