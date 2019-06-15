@@ -6,14 +6,14 @@ const withLeaflet = (Component) => {
   return class WithLeaflet extends React.PureComponent {
     constructor(props) {
       super(props);
-      console.log(props);
+      this.state = {
+        data: `Лерун`
+      }
 
     }
 
     render() {
-      return <Component 
-        {...this.props}
-      />
+      return <Component data={this.state.data} {...this.props} />;
     }
   }
 }
