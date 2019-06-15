@@ -64,29 +64,29 @@ class Map extends PureComponent {
   }
 }
 
-Map.propTypes = {
-  hotels: PropTypes.arrayOf(PropTypes.shape({
-    description: PropTypes.string.isRequired,
-    price: PropTypes.number.isRequired,
-    type: PropTypes.string.isRequired,
-    rating: PropTypes.number.isRequired,
-    photo: PropTypes.string.isRequired,
-    coordinates: PropTypes.arrayOf(PropTypes.number).isRequired
-  })).isRequired,
-  leaflet: PropTypes.object.isRequired,
-  mapData: PropTypes.shape({
-    isZoomControl: PropTypes.bool.isRequired,
-    isMarker: PropTypes.bool.isRequired,
-    iconUrl: PropTypes.string.isRequired,
-    iconSize: PropTypes.arrayOf(PropTypes.number).isRequired
-  }).isRequired,
-  city: PropTypes.shape({
-    city: PropTypes.oneOf([`Dusseldorf`, `Hamburg`, `Amsterdam`, `Brussels`, `Cologne`, `Paris`]).isRequired,
-    location: PropTypes.shape({
-      coordinates: PropTypes.arrayOf(PropTypes.number).isRequired,
-      zoom: PropTypes.number.isRequired
-    }).isRequired
-  }).isRequired
-};
+// Map.propTypes = {
+//   hotels: PropTypes.arrayOf(PropTypes.shape({
+//     description: PropTypes.string.isRequired,
+//     price: PropTypes.number.isRequired,
+//     type: PropTypes.string.isRequired,
+//     rating: PropTypes.number.isRequired,
+//     photo: PropTypes.string.isRequired,
+//     coordinates: PropTypes.arrayOf(PropTypes.number).isRequired
+//   })).isRequired,
+//   // leaflet: PropTypes.object.isRequired,
+//   mapData: PropTypes.shape({
+//     isZoomControl: PropTypes.bool.isRequired,
+//     isMarker: PropTypes.bool.isRequired,
+//     iconUrl: PropTypes.string.isRequired,
+//     iconSize: PropTypes.arrayOf(PropTypes.number).isRequired
+//   }).isRequired,
+//   city: PropTypes.shape({
+//     city: PropTypes.oneOf([`Dusseldorf`, `Hamburg`, `Amsterdam`, `Brussels`, `Cologne`, `Paris`]).isRequired,
+//     location: PropTypes.shape({
+//       coordinates: PropTypes.arrayOf(PropTypes.number).isRequired,
+//       zoom: PropTypes.number.isRequired
+//     }).isRequired
+//   }).isRequired
+// };
 
 export default Map;

@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 import City from "../city/city.jsx";
 import Map from "../map/map.jsx";
 import HotelCard from "../hotel-card/hotel-card.jsx";
+import withLeaflet from "../../hocs/withLeaflet.js";
 
 class HotelsPage extends PureComponent {
   constructor(props) {
@@ -13,12 +14,13 @@ class HotelsPage extends PureComponent {
   render() {
     const {hotels, cities, leaflet, mapData, activeCity, onCardActivate, onCityChange, city} = this.props;
 
-    const map = <Map
+    const WrappedMap = withLeaflet(Map);
+    const map = <WrappedMap 
       hotels={hotels}
       city={city}
-      leaflet={leaflet}
-      mapData={mapData}
+      mapData={mapData} 
     />;
+    console.log(map);
     const listItems = hotels.map((item, i) =>
       <HotelCard
         key={i}
@@ -131,7 +133,7 @@ HotelsPage.propTypes = {
       zoom: PropTypes.number.isRequired
     }).isRequired
   })).isRequired,
-  leaflet: PropTypes.object.isRequired,
+  // leaflet: PropTypes.object.isRequired,
   mapData: PropTypes.shape({
     isZoomControl: PropTypes.bool.isRequired,
     isMarker: PropTypes.bool.isRequired,

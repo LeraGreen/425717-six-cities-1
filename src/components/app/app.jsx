@@ -11,7 +11,7 @@ const App = (props) => {
   return <HotelsPage
     hotels={hotels}
     cities={cities}
-    leaflet={leaflet}
+    // leaflet={leaflet}
     mapData={mapData}
     activeCity={activeCity}
     onCityChange={onCityChange}
@@ -37,7 +37,7 @@ App.propTypes = {
       zoom: PropTypes.number.isRequired
     }).isRequired
   })).isRequired,
-  leaflet: PropTypes.object.isRequired,
+  // leaflet: PropTypes.object.isRequired,
   mapData: PropTypes.shape({
     isZoomControl: PropTypes.bool.isRequired,
     isMarker: PropTypes.bool.isRequired,
