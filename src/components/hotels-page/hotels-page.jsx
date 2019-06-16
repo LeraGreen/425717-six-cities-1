@@ -12,7 +12,7 @@ class HotelsPage extends PureComponent {
   }
 
   render() {
-    const {hotels, cities, leaflet, mapData, activeCity, onCardActivate, onCityChange, city} = this.props;
+    const {hotels, cities, mapData, activeCity, onCardActivate, onCityChange, city} = this.props;
 
     const WrappedMap = withLeaflet(Map);
     const map = <WrappedMap 
@@ -20,7 +20,6 @@ class HotelsPage extends PureComponent {
       city={city}
       mapData={mapData} 
     />;
-    console.log(map);
     const listItems = hotels.map((item, i) =>
       <HotelCard
         key={i}
