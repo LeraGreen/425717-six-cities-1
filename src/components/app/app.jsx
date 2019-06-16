@@ -6,12 +6,11 @@ import {changeCity, changeCard} from "../../reducer.js";
 import HotelsPage from "../hotels-page/hotels-page.jsx";
 
 const App = (props) => {
-  const {hotels, cities, leaflet, mapData, activeCity, onCityChange, onCardActivate, activeCityData} = props;
+  const {hotels, cities, mapData, activeCity, onCityChange, onCardActivate, activeCityData} = props;
 
   return <HotelsPage
     hotels={hotels}
     cities={cities}
-    // leaflet={leaflet}
     mapData={mapData}
     activeCity={activeCity}
     onCityChange={onCityChange}
@@ -37,7 +36,6 @@ App.propTypes = {
       zoom: PropTypes.number.isRequired
     }).isRequired
   })).isRequired,
-  // leaflet: PropTypes.object.isRequired,
   mapData: PropTypes.shape({
     isZoomControl: PropTypes.bool.isRequired,
     isMarker: PropTypes.bool.isRequired,

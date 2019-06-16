@@ -32,7 +32,7 @@ const withLeaflet = (Component) => {
           attribution: `&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>`
         })
         .addTo(this.map);
-      
+
       if (this._pinLayers.length) {
         this._clearPins();
       }
@@ -44,24 +44,25 @@ const withLeaflet = (Component) => {
         iconUrl: pinUrl,
         iconSize: pinSize
       });
-  
+
       this._pinLayers = hotels.map((hotel) => {
         return this.leaflet
           .marker(hotel[`coordinates`], {icon})
           .addTo(this.map);
       });
     }
-  
+
     _clearPins() {
       this._pinLayers.forEach((item) => {
         this.map.removeLayer(item);
       });
     }
-  }
-}
+  };
+};
 
-Map.propTypes = {
+withLeaflet.propTypes = {
   hotels: PropTypes.arrayOf(PropTypes.shape({
+    city: PropTypes.oneOf([`Dusseldorf`, `Hamburg`, `Amsterdam`, `Brussels`, `Cologne`, `Paris`]).isRequired,
     description: PropTypes.string.isRequired,
     price: PropTypes.number.isRequired,
     type: PropTypes.string.isRequired,

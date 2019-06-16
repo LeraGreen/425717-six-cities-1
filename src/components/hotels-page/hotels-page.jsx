@@ -15,10 +15,10 @@ class HotelsPage extends PureComponent {
     const {hotels, cities, mapData, activeCity, onCardActivate, onCityChange, city} = this.props;
 
     const WrappedMap = withLeaflet(Map);
-    const map = <WrappedMap 
+    const map = <WrappedMap
       hotels={hotels}
       city={city}
-      mapData={mapData} 
+      mapData={mapData}
     />;
     const listItems = hotels.map((item, i) =>
       <HotelCard
@@ -118,6 +118,7 @@ class HotelsPage extends PureComponent {
 
 HotelsPage.propTypes = {
   hotels: PropTypes.arrayOf(PropTypes.shape({
+    city: PropTypes.oneOf([`Dusseldorf`, `Hamburg`, `Amsterdam`, `Brussels`, `Cologne`, `Paris`]).isRequired,
     description: PropTypes.string.isRequired,
     price: PropTypes.number.isRequired,
     type: PropTypes.string.isRequired,

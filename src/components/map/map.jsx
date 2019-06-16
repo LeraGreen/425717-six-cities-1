@@ -19,6 +19,7 @@ class Map extends PureComponent {
 
 Map.propTypes = {
   hotels: PropTypes.arrayOf(PropTypes.shape({
+    city: PropTypes.oneOf([`Dusseldorf`, `Hamburg`, `Amsterdam`, `Brussels`, `Cologne`, `Paris`]).isRequired,
     description: PropTypes.string.isRequired,
     price: PropTypes.number.isRequired,
     type: PropTypes.string.isRequired,
